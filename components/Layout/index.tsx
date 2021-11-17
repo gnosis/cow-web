@@ -8,9 +8,7 @@ import { PropsWithChildren } from 'react'
 import { Trans } from '@lingui/macro'
 import Header from './Header'
 import Footer from './Footer'
-
-export const SITE_TITLE = 'CoW Protocol'
-export const URL_PRODUCTION = "https://cowswap.exchange"
+import { SITE_TITLE, URL_PRODUCTION } from '../../constants'
 
 export type LayoutProps = PropsWithChildren<{
   home?: boolean

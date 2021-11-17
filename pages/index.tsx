@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { GetStaticProps } from 'next'
 
 import { getSortedPostsData } from '../lib/posts'
-import Layout, { SITE_TITLE } from '../components/Layout'
+import Layout from '../components/Layout'
 import Date from '../components/Date'
 
 import utilStyles from '../styles/utils.module.scss'
@@ -13,6 +13,7 @@ import { loadTranslation } from '../lib/i18n'
 import { toPostPath } from '../util/posts'
 import { useRouter } from 'next/router'
 import Alert from '../components/Alerts'
+import { SITE_TITLE } from '../constants'
 // import { useRouter } from 'next/router'
 
 export default function Home({ allPostsData }) {
@@ -25,7 +26,6 @@ export default function Home({ allPostsData }) {
       <section className={utilStyles.headingMd}>
         {/* https://blog.logrocket.com/complete-guide-internationalization-nextjs/ */}
         <p><Trans>MetaDEX Aggregator Exchange with MEV Protection</Trans></p>
-
       </section>
 
       {/* Add this <section> tag below the existing <section> tag */}
@@ -48,6 +48,9 @@ export default function Home({ allPostsData }) {
           ))}
         </ul>
       </section>
+      <style jsx>{`
+        /* Styles */
+      `}</style>
     </Layout>
   )
 }

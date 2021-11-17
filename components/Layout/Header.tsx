@@ -3,7 +3,8 @@ import Link from 'next/link'
 
 import utilStyles from '../../styles/utils.module.scss'
 
-import { LayoutProps, SITE_TITLE } from '.'
+import { LayoutProps } from '.'
+import { SITE_TITLE } from '../../constants'
 
 export default function Header(props: LayoutProps) {
   const { home = false } = props
