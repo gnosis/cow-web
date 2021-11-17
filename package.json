@@ -1,5 +1,6 @@
 {
   "private": true,
+  "version": "0.0.1",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -8,6 +9,7 @@
     "i18n:compile": "npx lingui compile"
   },
   "dependencies": {
+    "@gnosis.pm/gp-v2-contracts": "^1.1.2",
     "@lingui/macro": "^3.12.1",
     "@lingui/react": "^3.12.1",
     "classnames": "^2.3.1",
