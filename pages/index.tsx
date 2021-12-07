@@ -6,8 +6,6 @@ import { getSortedPostsData } from '../lib/posts'
 import Layout, { SITE_TITLE } from '../components/Layout'
 import Date from '../components/Date'
 
-import utilStyles from '../styles/utils.module.scss'
-
 import { Trans } from '@lingui/macro'
 import { loadTranslation } from '../lib/i18n'
 import { toPostPath } from '../util/posts'
@@ -19,35 +17,33 @@ export default function Home({ allPostsData }) {
   const { locale } = useRouter()
   return (
     <Layout home>
+
       <Head>
         <title>{SITE_TITLE}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
+
         {/* https://blog.logrocket.com/complete-guide-internationalization-nextjs/ */}
-        <p><Trans>MetaDEX Aggregator Exchange with MEV Protection</Trans></p>
+        <h1><Trans>MetaDEX Aggregator Exchange with MEV Protection</Trans></h1>
 
-      </section>
 
-      {/* Add this <section> tag below the existing <section> tag */}
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}><Trans>Blog</Trans></h2>
+
+        <h2><Trans>Blog</Trans></h2>
         {locale !== 'en' && (
           <Alert type="warning"><Trans>Posts are not internationalized yet. This is just a PoC</Trans></Alert>
         )}
-        <ul className={utilStyles.list}>
+        <ul>
           {allPostsData.map(({ id, date, locale, title }) => (
-            <li className={utilStyles.listItem} key={id}>
+            <li key={id}>
               <Link href={`/posts/${toPostPath(id, locale)}`}>
                 <a>{title}</a>
               </Link>
               <br />
-              <small className={utilStyles.lightText}>
+              <small>
                 <Date dateString={date} />
               </small>
             </li>
           ))}
         </ul>
-      </section>
     </Layout>
   )
 }

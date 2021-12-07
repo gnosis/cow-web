@@ -1,5 +1,5 @@
 import { AppProps } from 'next/app'
-import '../styles/global.scss'
+import GlobalStyles from '../styles/global'
 
 import { i18n } from '@lingui/core'
 import { I18nProvider } from "@lingui/react";
@@ -35,6 +35,7 @@ export default function App(props: AppProps) {
 
   return (
     <I18nProvider i18n={i18n}>
+      <GlobalStyles />
       <Component {...pageProps} />
     </I18nProvider>
   )

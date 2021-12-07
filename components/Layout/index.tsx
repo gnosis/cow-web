@@ -1,7 +1,7 @@
+import styled from 'styled-components';
+
 import Head from 'next/head'
 import Link from 'next/link'
-
-import styles from './Layout.style'
 
 import { PropsWithChildren } from 'react'
 
@@ -15,6 +15,29 @@ export const URL_PRODUCTION = "https://cowswap.exchange"
 export type LayoutProps = PropsWithChildren<{
   home?: boolean
 }>
+
+const Wrapper = styled.div`
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+`
+
+const WrapperInner = styled.div`
+  background: grey;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 148rem;
+`
+
+const Content = styled.main`
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+`
 
 export default function Layout(props: LayoutProps) {
   const { children, home = false } = props
@@ -45,20 +68,14 @@ export default function Layout(props: LayoutProps) {
         <meta name="twitter:title" content={SITE_TITLE} />
         <meta name="twitter:image" content={URL_PRODUCTION + "/images/og-meta-cowswap.png"} />
       </Head>
-      <div className="container">
-        <Header home={home} />
-        <main>{children}</main>
-        {!home && (
-          <div className="backToHome">
-            <Link href="/">
-              <a>← {' '}<Trans>Back to home</Trans></a>
-            </Link>
-          </div>
-        )}
-      </div>
-      <Footer />
 
-      <style jsx>{styles}</style>
+      <Wrapper>
+        <WrapperInner>
+          <Header home={home} />
+          <Content>{children}</Content>
+          <Footer />
+        </WrapperInner>
+      </Wrapper>
     </>
   )
 }

@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import utilStyles from '../../styles/utils.module.scss'
-
 import { LayoutProps, SITE_TITLE } from '.'
 
 export default function Header(props: LayoutProps) {
@@ -15,12 +13,11 @@ export default function Header(props: LayoutProps) {
           <Image
             priority
             src="/favicon.png"
-            className={utilStyles.borderCircle}
             height={144}
             width={144}
             alt={SITE_TITLE}
           />
-          <h1 className={utilStyles.heading2Xl}>{SITE_TITLE}</h1>
+          <h1>{SITE_TITLE}</h1>
         </>
       ) : (
         <>
@@ -29,16 +26,16 @@ export default function Header(props: LayoutProps) {
               <Image
                 priority
                 src="/favicon.png"
-                className={utilStyles.borderCircle}
+
                 height={108}
                 width={108}
                 alt={SITE_TITLE}
               />
             </a>
           </Link>
-          <h2 className={utilStyles.headingLg}>
+          <h2>
             <Link href="/">
-              <a className={utilStyles.colorInherit}>{SITE_TITLE}</a>
+              <a>{SITE_TITLE}</a>
             </Link>
           </h2>
         </>
