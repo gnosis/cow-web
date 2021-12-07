@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { GetStaticProps } from 'next'
 
 import { getSortedPostsData } from '../lib/posts'
-import Layout, { SITE_TITLE } from '../components/Layout'
+import Layout from '../components/Layout'
 import Date from '../components/Date'
 
 import { Trans } from '@lingui/macro'
@@ -12,6 +12,9 @@ import { toPostPath } from '../util/posts'
 import { useRouter } from 'next/router'
 import Alert from '../components/Alerts'
 // import { useRouter } from 'next/router'
+import { SiteConfig } from '../const/meta'
+
+const { title, descriptionShort} = SiteConfig
 
 export default function Home({ allPostsData }) {
   const { locale } = useRouter()
@@ -19,7 +22,7 @@ export default function Home({ allPostsData }) {
     <Layout home>
 
       <Head>
-        <title>{SITE_TITLE}</title>
+        <title>{title} - {descriptionShort}</title>
       </Head>
 
         {/* https://blog.logrocket.com/complete-guide-internationalization-nextjs/ */}

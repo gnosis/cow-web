@@ -1,5 +1,5 @@
 import { AppProps } from 'next/app'
-import GlobalStyles from '../styles/global'
+import GlobalStyles from '../const/styles/global'
 
 import { i18n } from '@lingui/core'
 import { I18nProvider } from "@lingui/react";
