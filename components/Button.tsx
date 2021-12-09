@@ -1,23 +1,26 @@
 import styled from 'styled-components'
-import { borderRadius, transparentize } from 'polished'
+import { transparentize } from 'polished'
 import { Defaults, Color, Font } from '../const/styles/variables'
 
 type ButtonProps = {
   wrapText?: boolean
   borderRadius?: number
   fontSize?: number
+  paddingLR?: number
+  variant?: string
   children?: any
 }
 
 const Wrapper = styled.button<ButtonProps>`
   display: flex;
-  background: ${transparentize(0.9, Color.orange)};
+  background: ${({ variant }) => variant === 'white' ? Color.black : transparentize(0.9, Color.orange)};
   flex-flow: row;
-  border: 0.1rem solid ${Color.orange};
-  padding: 0 1.6rem;
+  border: 0.1rem solid ${({ variant }) => variant === 'white' ? transparentize(0.6, Color.grey) : Color.orange};
+  color: ${({ variant }) => variant === 'white' ? Color.white : Color.orange};
+  padding: ${({ paddingLR }) => paddingLR ? `0 ${paddingLR}rem` : '0 6rem'};
   box-sizing: border-box;
   border-radius: ${({ borderRadius }) => borderRadius ? borderRadius : Defaults.borderRadius};
-  min-height: 4.8rem;
+  min-height: 5.6rem;
   align-items: center;
   font-size: ${({ fontSize }) => fontSize ? fontSize : Font.sizeDefault};
   justify-content: center;
@@ -26,12 +29,13 @@ const Wrapper = styled.button<ButtonProps>`
 
   > a {
     text-decoration: none;
+    color: inherit;
   }
 `
 
-export default function Button({ wrapText, borderRadius, fontSize, children }: ButtonProps) {
+export default function Button({ wrapText, borderRadius, fontSize, paddingLR, variant, children }: ButtonProps) {
   return (
-    <Wrapper wrapText={wrapText} borderRadius={borderRadius} fontSize={fontSize}>
+    <Wrapper {...{wrapText, borderRadius, fontSize, paddingLR, variant}}>
       {children}
     </Wrapper>
   )

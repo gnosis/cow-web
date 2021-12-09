@@ -1,14 +1,14 @@
-import Link from 'next/link'
+// import Link from 'next/link'
 
-import { useRouter } from 'next/router'
-import cn from 'classnames'
+// import { useRouter } from 'next/router'
+// import cn from 'classnames'
 
 export default function Footer() {
-  const { locale, asPath } = useRouter()
+  // const { locale, asPath } = useRouter()
 
   return (
     <footer>
-      Languages:
+      {/* Languages:
       <Link href={asPath} locale="en">
         <a className={cn({
           active: locale === "en"
@@ -17,7 +17,7 @@ export default function Footer() {
         <a className={cn({
           active: locale === "es"
         })}>Español</a>
-      </Link>
+      </Link> */}
     </footer>
   )
 }

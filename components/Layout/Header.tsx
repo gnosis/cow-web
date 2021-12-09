@@ -1,23 +1,28 @@
 import styled from 'styled-components';
-import Image from 'next/image'
+// import Image from 'next/image'
 import Link from 'next/link'
+import { transparentize } from 'polished'
 
 import { LayoutProps } from '.'
-import { SiteConfig } from '../../const/meta'
 import { mainMenu } from '../../const/menu'
 import Button from '../Button'
 import { Color, Font } from '../../const/styles/variables'
 
 const LogoImage = 'images/logo.svg'
-const { title } = SiteConfig
 
 const Wrapper = styled.header`
+  z-index: 10;
   width: 100%;
+  position: sticky;
+  top: 0;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
-  margin: 2.4rem auto 5.6rem;
+  background: ${transparentize(0.4, Color.black)};
+  backdrop-filter: blur(60px);
+  padding: 2.4rem 5.6rem;
+  margin: 0 auto;
 `
 
 const Menu = styled.ol`
@@ -25,6 +30,8 @@ const Menu = styled.ol`
   list-style: none;
   font-size: ${Font.sizeDefault};
   color: ${Color.grey};
+  padding: 0;
+  margin: 0;
 
   > li:not(:last-of-type) {
     margin: 0 3.6rem 0 0;
@@ -42,14 +49,13 @@ const Menu = styled.ol`
 `
 
 const Logo = styled.div`
-  width: 17rem;
+  width: 14rem;
   height: 5.7rem;
   background: url(${LogoImage}) no-repeat center/contain;
   cursor: pointer;
 `
 
 export default function Header(props: LayoutProps) {
-  const { home = false } = props
 
   return (
     <Wrapper>
@@ -67,7 +73,7 @@ export default function Header(props: LayoutProps) {
         ))}
       </Menu>
 
-      <Button><Link href="/">Trade on CowSwap</Link></Button>
+      <Button paddingLR={2.4}><Link href="/">Trade on CowSwap</Link></Button>
 
     </Wrapper>
   )

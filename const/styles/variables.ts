@@ -14,6 +14,6 @@ export const Font = {
   arial: "Arial, Helvetica, sans-serif",
   sizeDefault: '1.6rem',
   weightNormal: 400,
-  weightMedium: 500,
+  weightMedium: 600,
   weightBold: 700,
 }

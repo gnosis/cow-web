@@ -4,7 +4,10 @@ export const SiteConfig = {
   descriptionShort: 'Ethereums MetaDEX Aggregator',
   url: { production: "https://cowswap.exchange" },
   social: {
-    twitter: '@MEVprotection'
+    twitter: {label: 'Twitter', account: '@MEVprotection', url:'https://twitter.com/mevprotection'},
+    discord: {label: 'Discord', url:'https://chat.cowswap.exchange/'},
+    github: {label: 'GitHub', url:'https://github.com/gnosis/gp-v2-contracts'},
+    forum: {label: 'Forum', url:'https://forum.gnosis.io/'},
   }
 }
 
@@ -25,7 +28,7 @@ export const Meta = `
   <meta property="og:url" content=${SiteConfig.url.production} /> {/* TODO: Add URL */}
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content=${SiteConfig.social.twitter} />
+  <meta name="twitter:site" content=${SiteConfig.social.twitter.account} />
   <meta name="twitter:title" content=${SiteConfig.title} />
   <meta name="twitter:image" content=${SiteConfig.url.production + "/images/og-meta-cowswap.png"} />
 `

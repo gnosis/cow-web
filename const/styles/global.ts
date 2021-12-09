@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import {Color, Font} from './variables'
+import { Color, Font } from './variables'
 
 const GlobalStyles = createGlobalStyle`
   html, body {  
@@ -20,16 +20,16 @@ const GlobalStyles = createGlobalStyle`
   }
 
   *::selection {
-    background: ${Color.white};
+    background: ${Color.orange};
     color: ${Color.black};
   }
 
   *::-moz-selection {
-    background: ${Color.white};
+    background: ${Color.orange};
   }
 
   *::-webkit-selection {
-    background: ${Color.white};
+    background: ${Color.orange};
   }
 
   *::-moz-placeholder {
@@ -63,17 +63,9 @@ const GlobalStyles = createGlobalStyle`
       }
   }
 
-  h1, h2, h3 {
+  h1, h2, h3, p, b, i, strong {
     margin: 0;
-    margin: 0.5rem 0;
-  }
-
-  h1 {
-    font-size: 3rem;
-  }
-
-  h2 {
-    font-size: 2rem;
+    line-height: 1;
   }
 
   button {
