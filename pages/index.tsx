@@ -43,7 +43,7 @@ export default function Home() {
       {/* 2nd section */}
       <Section flow={'column'}>
         <div>
-          <SectionImage margin={'0 auto -15rem'}><img loading="lazy" src="/images/cowPrinter.jpg" /></SectionImage>
+          <SectionImage margin={'0 auto -17rem'} height={'70rem'}><img loading="lazy" src="/images/cowBelt.jpg" /></SectionImage>
           <h2>A fast growing protocol</h2>
           <SubTitle align="center">Getting you better prices, zero revert rates, <br />MEV protection and gas costs savings. <ExternalLink href="#">View analytics</ExternalLink></SubTitle>
           <Metrics>
