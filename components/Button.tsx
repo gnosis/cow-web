@@ -8,7 +8,7 @@ type ButtonProps = {
   fontSize?: number
   paddingLR?: number
   variant?: string
-  children?: any
+  children?: React.ReactNode
 }
 
 const Wrapper = styled.button<ButtonProps>`
@@ -31,6 +31,13 @@ const Wrapper = styled.button<ButtonProps>`
     text-decoration: none;
     color: inherit;
   }
+`
+
+// General purpose multiple button wrapper
+export const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 1.6rem;
+  width: 100%;
 `
 
 export default function Button({ wrapText, borderRadius, fontSize, paddingLR, variant, children }: ButtonProps) {

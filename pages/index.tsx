@@ -1,242 +1,17 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import styled from 'styled-components';
 
 import Layout from '../components/Layout'
-import { transparentize } from 'polished'
+import { ExternalLink } from '../const/styles/global'
+import { ButtonWrapper } from '../components/Button'
+import { Section, SubTitle, ScrollDownButton, CowSlider, SectionImage, IconList, IconListItem, Metrics, CheckList, SocialList, ApiTool, ApiUrl, ApiOutput, ApiParams } from '../const/styles/pages/index'
 
 // import { Trans } from '@lingui/macro'
 import { SiteConfig } from '../const/meta'
 import metrics from '../const/metrics'
 import Button from '../components/Button'
-import { Defaults, Color, Font } from '../const/styles/variables'
 
 const { title, descriptionShort, social } = SiteConfig
-
-const Section = styled.section<{ hero?: boolean, flow?: string, fullWidth?: boolean }>`
-  display: flex;
-  width: 100%;
-  max-width: ${({ fullWidth }) => fullWidth ? '100vw' : '148rem'};
-  min-height: 100vh;
-  flex-flow: ${({ flow }) => flow === 'column' ? 'column wrap' : 'row'};
-  gap: 8rem;
-  margin: 10rem auto;
-
-  // Hero specific styling
-  ${({ hero }) => hero && `
-    margin: 0 auto;
-    min-height: calc(100vh - 8.1rem);
-  `}
-
-  > div {
-    display: flex;
-    flex-flow: ${({ flow }) => flow === 'column' ? 'column wrap' : 'row wrap'};
-    flex: ${({ flow }) => flow === 'column' ? '1 1 auto' : '1 1 50%'};
-    justify-content: ${({ flow }) => flow === 'column' ? 'center' : 'flex-start'};
-    align-items: center;
-    align-content: center;
-    gap: 5rem;
-  }
-
-   h1, h2, h3 {
-    font-size: ${({ hero }) => hero ? "6.8rem" : "5.4rem"};
-    line-height: 1.2;
-    font-weight: ${Font.weightBold};
-    margin: 0;
-  }
-`
-
-const SubTitle = styled.p<{ maxWidth: number, align: string }>`
-  display: inline-block;
-  font-size: 1.7rem;
-  color: ${Color.grey};
-  font-weight: ${Font.weightNormal};
-  line-height: 2;
-  text-align: ${({ align }) => align ? align : "left"};
-  max-width: ${({ maxWidth }) => maxWidth && `${maxWidth}rem`};
-`
-
-const SectionImage = styled.div<{ margin?: string, height?: string }>`
-  width: 100%;
-  height: ${({ height }) => height ? height : '100%'};
-  margin: ${({ margin }) => margin ? margin : '0 auto'};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column wrap;
-  position: relative;
-
-    > img {
-      object-fit: cover;
-      width: 100%;
-      height: inherit;
-    }
-`
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  gap: 1.6rem;
-`
-
-const CowSlider = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100%;
-  background: black;
-  border: 1px solid grey;
-  backdrop-filter: blur(60px);
-  border-radius: 70px;
-  max-height: 64rem;
-`
-
-const ScrollDownButton = styled.button`
-  display: flex;
-  width: 14rem;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  flex: 0;
-  position: absolute;
-  bottom: 3.2rem;
-  justify-content: center;
-  align-items: center;
-  background: none;
-  border: 0;
-  color: ${Color.grey};
-  gap: 1rem;
-  font-size: 1.6rem;
-  animation: floating 2s linear 1s infinite alternate;
-
-  &::before {
-    content: "";
-    display: block;
-    width: 2rem;
-    height: 2rem;
-    background: url('images/icons/handDown.svg') no-repeat center/contain;
-  }
-
-  @keyframes floating {
-    from {transform: translateY(0)}
-    to {transform: translateY(-1rem)}
-  }
-`
-
-const Metrics = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  width: 100%;
-  justify-content: center;
-  gap: 12rem;
-
-  > div {
-    flex: 0 1 auto;
-    justify-content: center;
-    align-items: flex-start;
-    display: flex;
-    flex-flow: column wrap;
-    gap: 1.6rem;
-  }
-
-  > div > b {
-    font-size: 7.4rem;
-    font-weight: ${Font.weightNormal};
-  }
-
-  > div > i {
-    font-style: normal;
-    font-size: 1.5rem;
-    color: ${transparentize(0.2, Color.grey)};
-  }
-`
-
-const IconList = styled.ol`
-  display: grid;
-  max-width: 110rem;
-  grid-template-columns: 1fr 1fr; 
-  width: 100%;
-  margin: 5.6rem auto 0;
-  padding: 0;
-  gap: 7rem 10rem;
-`
-
-const IconListItem = styled.li<{ icon?: string }>`
-  display: grid;
-  grid-template-columns: 6.5rem 1fr; 
-  flex-flow: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  justify-items: flex-start;
-  align-content: flex-start;
-
-  &::before {
-    ${({ icon }) => icon && `
-      content: "";
-      height: 100%;
-      width: 4.2rem;
-      display: block;
-      margin: -1rem 0 0;
-      background: url(${icon}) no-repeat top/contain;
-    `};
-  }
-
-  > span {
-    display: flex;
-    flex-flow: column wrap;
-    flex: 1 1 auto;
-    gap: 1.2rem;
-  }
-
-  > span > b {
-    font-size: 2.4rem;
-  }
-  
-  > span > p {
-    font-size: 1.6rem;
-    line-height: 1.6;
-    color: ${Color.grey};
-  }
-`
-
-const SocialList = styled.ol`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 110rem;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0;
-  gap: 7rem;
-  list-style-type: none;
-  color: ${Color.grey};
-  font-weight: ${Font.weightNormal};
-
-  > li > a {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    font-size: 1.6rem;
-    line-height: 1;
-    text-decoration: none;
-    color: inherit;
-    font-weight: inherit;
-    padding: 2rem;
-    border-radius: 2rem;
-    border: 0.1rem solid transparent;
-    transition: color 0.2s ease-in-out, background 0.2s ease-in-out, border-color 0.2s ease-in-out;
-
-    &:hover {
-      background: ${transparentize(0.9, Color.orange)};
-      border: 0.1rem solid ${Color.orange};
-      color: ${Color.orange};
-    }
-  }
-
-  > li > a > b {
-    font-weight: inherit;
-  }
-`
 
 export default function Home() {
   return (
@@ -270,10 +45,10 @@ export default function Home() {
         <div>
           <SectionImage margin={'0 auto -15rem'}><img loading="lazy" src="/images/cowPrinter.jpg" /></SectionImage>
           <h2>A fast growing protocol</h2>
-          <SubTitle align="center">Getting you better prices, zero revert rates, <br />MEV protection and gas costs savings. <Link href="/">View analytics</Link></SubTitle>
+          <SubTitle align="center">Getting you better prices, zero revert rates, <br />MEV protection and gas costs savings. <ExternalLink href="#">View analytics</ExternalLink></SubTitle>
           <Metrics>
-            {metrics.map(({ label, value }) =>
-              <div>
+            {metrics.map(({ label, value }, i) =>
+              <div key={i}>
                 <b>{value}</b>
                 <i>{label}</i>
               </div>
@@ -344,26 +119,69 @@ export default function Home() {
         </div>
       </Section>
 
-            {/* Dev section */}
-            <Section hero>
+      {/* 5th section */}
+      <Section>
         <div>
-          <h1>DeFi liquidity protocol with
-            MEV protection</h1>
-          <SubTitle>COW Protocol enables top DeFi rates with MEV protection by settling orders using batch settlements and leverages P2P (CoW) orders in combination with fallback liquidity from AMMs and DEX aggregators.</SubTitle>
+          <ApiTool>
+            <h4>Get a price quote</h4>
+
+            <ApiParams>
+              <span><b>WETH</b><small>sellToken</small></span>
+              <span><b>USDC</b><small>buyToken</small></span>
+              <span><b>340</b><small>sellAmountBeforeFee</small></span>
+            </ApiParams>
+
+            <ApiUrl>
+              <b>curl</b>
+              <p>https://protocol-mainnet.gnosis.io/api/<span>v1/quote</span></p>
+            </ApiUrl>
+
+            <ApiOutput>
+              <b>Quoted order response:</b>
+              <div>
+                <span>curl</span> -X 'POST' \ <br />
+                'https://protocol-mainnet.dev.gnosisdev.com/api/v1/quote' \<br />
+                -H 'accept: application/json' \<br />
+                -H 'Content-Type: application/json' \<br />
+                -d '{'{'} <br />
+                <span>"sellToken":</span> "0x6810e776880c02933d47db1b9fc05908e5386b96",<br />
+                <span>"buyToken":</span> "0x6810e776880c02933d47db1b9fc05908e5386b96",<br />
+                <span>"receiver":</span> "0x6810e776880c02933d47db1b9fc05908e5386b96",<br />
+                <span>"validTo":</span> 0,<br />
+                <span>"appData":</span> "0x0000000000000000000000000000000000000000000000000000000000000000",<br />
+                <span>"partiallyFillable":</span> true,<br />
+                <span>"sellTokenBalance":</span> "erc20",<br />
+                <span>"buyTokenBalance":</span> "erc20",<br />
+                <span>"from":</span> "0x6810e776880c02933d47db1b9fc05908e5386b96",<br />
+                <span>"kind":</span> "sell",<br />
+                <span>"sellAmountBeforeFee":</span> "1234567890"<br />
+                {'}'}
+              </div>
+
+            </ApiOutput>
+          </ApiTool>
+        </div>
+        <div>
+          <SectionImage margin={"0 0 -4rem -1rem"} width={"10rem"} height={"10rem"}>
+            <img loading="lazy" src="/images/icons/plug.svg" />
+          </SectionImage>
+
+          <h3>Plug-n-play trading protocol with just a few lines of code</h3>
+          <SubTitle>Directly interact with the COW protocol to place, manage and settle your orders through a documented API interface.</SubTitle>
+
+          <CheckList>
+            <li>Fetch Quotes</li>
+            <li>Create and cancel limit orders</li>
+            <li>Manage orders accross Ethereum, Rinkeby and XDAI.</li>
+          </CheckList>
 
           <ButtonWrapper>
             <Button><Link href="/">API Docs</Link></Button>
-            <Button variant='white'><Link href="/">Analytics</Link></Button>
           </ButtonWrapper>
         </div>
-        <div>
-          <CowSlider>
-          </CowSlider>
-        </div>
-        <ScrollDownButton>Scroll down</ScrollDownButton>
       </Section>
 
-      {/* 5th section */}
+      {/* 6th section */}
       <Section flow={'column'} fullWidth>
         <div>
           <SectionImage margin={'0 0 -7rem'} height={'78rem'}>
@@ -406,14 +224,14 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 6th section */}
+      {/* 7th section */}
       <Section flow={'column'}>
         <div>
           <h3>Join the community</h3>
           <SubTitle align={'center'} maxWidth={62}>Learn more about COW Protocol, chat with the team, others in the community, and have your say in shaping the future of decentralized finance.</SubTitle>
           <SocialList>
-            {Object.keys(social).map((item) =>
-              <li>
+            {Object.keys(social).map((item, i) =>
+              <li key={i}>
                 <a href={social[item].url} target="_blank" rel="noopener nofollow">
                   <img src={`images/icons/${social[item].label.toLowerCase()}.svg`}></img>
                   <b>{social[item].label}</b>
@@ -423,7 +241,6 @@ export default function Home() {
           </SocialList>
         </div>
       </Section>
-
 
     </Layout>
   )

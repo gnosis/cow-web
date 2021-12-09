@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import { Color, Font } from './variables'
 
 const GlobalStyles = createGlobalStyle`
@@ -17,6 +17,20 @@ const GlobalStyles = createGlobalStyle`
     text-rendering: geometricPrecision;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scrollbar-color: ${Color.orange} ${Color.black};
+
+    &::-webkit-scrollbar {
+      width: 1.6rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: ${Color.black};
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: ${Color.orange};
+      border-radius: 10rem;
+    }
   }
 
   *::selection {
@@ -112,6 +126,18 @@ const GlobalStyles = createGlobalStyle`
   
   .noScroll {
     overflow: hidden;
+  }
+`
+
+export const ExternalLink = styled.a`
+  display: inline-block;
+  color: ${Color.orange};
+
+  &::after {
+    content: "↗";
+    color: inherit;
+    font-size: 1.6rem;
+    display: inline-block;
   }
 `
 
