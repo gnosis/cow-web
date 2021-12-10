@@ -172,10 +172,13 @@ export default function CowSlider() {
       <CowTop>
         <span>
           <b>Batch Settlement Example</b>
-          <ol>
-            <li>Orders: <i>12</i></li>
-            <li>Gas per order: <i>~$30</i></li>
-          </ol>
+          {batches.length > 0 && Array(batches.find(b => b.id === activeBatch)).map(({ orders, gasPerOrder }) =>
+            <ol>
+              <li>Orders: <i>{orders}</i></li>
+              <li>Gas per order: <i>~${gasPerOrder}</i></li>
+            </ol>
+          )
+          }
         </span>
 
         {batches.length > 0 && <CowTabs>
@@ -199,20 +202,22 @@ export default function CowSlider() {
         <img src="images/cow-graph-partialCow.png" alt="Partial CoW" />
       </CowVisual>
 
-      {batches.length > 0 && <CowBarWrapper>
-        {Array(batches.find(b => b.id === activeBatch)).map(batch => {
-          return (batch.bars).map(({ id, network, percent }) => {
-            return network && <CowBar
-              key={id || 0}
-              position={id}
-              percent={percent}
-              network={getNetworkConfig(network)}
-              data-label={getNetworkConfig(network).label}
-            />
-          })
-        })}
-      </CowBarWrapper>}
+      {
+        batches.length > 0 && <CowBarWrapper>
+          {Array(batches.find(b => b.id === activeBatch)).map(batch => {
+            return (batch.bars).map(({ id, network, percent }) => {
+              return network && <CowBar
+                key={id || 0}
+                position={id}
+                percent={percent}
+                network={getNetworkConfig(network)}
+                data-label={getNetworkConfig(network).label}
+              />
+            })
+          })}
+        </CowBarWrapper>
+      }
 
-    </Wrapper>
+    </Wrapper >
   )
 }

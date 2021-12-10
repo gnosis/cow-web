@@ -17,7 +17,7 @@ export const batches = [
     id: 2,
     label: 'Partial CoW',
     orders: 4,
-    gasPerOrder: 30,
+    gasPerOrder: 21,
     batchURL: '/',
     visual: 'cow-graph-partialCow.png',
     bars: [
@@ -31,7 +31,7 @@ export const batches = [
     id: 3,
     label: 'No CoW',
     orders: 8,
-    gasPerOrder: 30,
+    gasPerOrder: 11,
     batchURL: '/',
     visual: 'cow-graph-partialCow.png',
     bars: [
