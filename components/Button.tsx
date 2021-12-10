@@ -7,6 +7,7 @@ type ButtonProps = {
   borderRadius?: number
   fontSize?: number
   paddingLR?: number
+  hasLink?: boolean
   variant?: string
   children?: React.ReactNode
 }
@@ -17,19 +18,30 @@ const Wrapper = styled.button<ButtonProps>`
   flex-flow: row;
   border: 0.1rem solid ${({ variant }) => variant === 'white' ? transparentize(0.6, Color.grey) : Color.orange};
   color: ${({ variant }) => variant === 'white' ? Color.white : Color.orange};
-  padding: ${({ paddingLR }) => paddingLR ? `0 ${paddingLR}rem` : '0 6rem'};
+  padding: ${({ hasLink, paddingLR }) => hasLink ? '0' : paddingLR ? `0 ${paddingLR}rem` : '0 6rem'};
   box-sizing: border-box;
   border-radius: ${({ borderRadius }) => borderRadius ? borderRadius : Defaults.borderRadius};
   min-height: 5.6rem;
   align-items: center;
   font-size: ${({ fontSize }) => fontSize ? fontSize : Font.sizeDefault};
   justify-content: center;
-  transition: background 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
   white-space: ${({ wrapText }) => wrapText ? 'initial' : 'nowrap'};
+
+  &:hover {
+    background: ${({ variant }) => variant === 'white' ? Color.white : Color.orange};
+    color: ${Color.black};
+  }
 
   > a {
     text-decoration: none;
     color: inherit;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ${({ hasLink }) => hasLink && '0 6rem'};
   }
 `
 
@@ -42,7 +54,7 @@ export const ButtonWrapper = styled.div`
 
 export default function Button({ wrapText, borderRadius, fontSize, paddingLR, variant, children }: ButtonProps) {
   return (
-    <Wrapper {...{wrapText, borderRadius, fontSize, paddingLR, variant}}>
+    <Wrapper {...{ wrapText, borderRadius, fontSize, paddingLR, variant }}>
       {children}
     </Wrapper>
   )

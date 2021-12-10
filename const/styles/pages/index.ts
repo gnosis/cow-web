@@ -37,12 +37,12 @@ export const Section = styled.section<{ hero?: boolean, flow?: string, fullWidth
   }
 `
 
-export const SubTitle = styled.p<{ maxWidth?: number, align?: string }>`
+export const SubTitle = styled.p<{ maxWidth?: number, align?: string, lineHeight?: number }>`
   display: inline-block;
   font-size: 1.9rem;
   color: ${Color.grey};
-  font-weight: ${Font.weightLight};
-  line-height: 2;
+  font-weight: ${Font.weightNormal};
+  line-height: ${({ lineHeight }) => lineHeight ? lineHeight : 1.5};
   text-align: ${({ align }) => align ? align : "left"};
   max-width: ${({ maxWidth }) => maxWidth && `${maxWidth}rem`};
   z-index: 1;
@@ -64,17 +64,6 @@ export const SectionImage = styled.div<{ margin?: string, height?: string, width
       width: 100%;
       height: inherit;
     }
-`
-
-export const CowSlider = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100%;
-  background: black;
-  border: 0.1rem solid ${Color.border};
-  backdrop-filter: blur(6rem);
-  border-radius: 7rem;
-  max-height: 64rem;
 `
 
 export const ScrollDownButton = styled.button`

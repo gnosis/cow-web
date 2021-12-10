@@ -1,19 +1,21 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
+import { batches } from '../const/batches'
 import Layout from '../components/Layout'
 import { ExternalLink } from '../const/styles/global'
 import { ButtonWrapper } from '../components/Button'
-import { Section, SubTitle, ScrollDownButton, CowSlider, SectionImage, IconList, IconListItem, Metrics, CheckList, SocialList, ApiTool, ApiUrl, ApiOutput, ApiParams } from '../const/styles/pages/index'
+import CowSlider from '../components/CowSlider'
+import { Section, SubTitle, ScrollDownButton, SectionImage, IconList, IconListItem, Metrics, CheckList, SocialList, ApiTool, ApiUrl, ApiOutput, ApiParams } from '../const/styles/pages/index'
 
 // import { Trans } from '@lingui/macro'
 import { SiteConfig } from '../const/meta'
 import metrics from '../const/metrics'
 import Button from '../components/Button'
 
-const { title, descriptionShort, social } = SiteConfig
+export default function Home({ batchesData, metricsData, siteConfigData }) {
+  const { title, descriptionShort, social } = siteConfigData
 
-export default function Home() {
   return (
     <Layout>
 
@@ -26,16 +28,15 @@ export default function Home() {
         <div>
           <h1>DeFi liquidity protocol with
             MEV protection</h1>
-          <SubTitle>COW Protocol enables top DeFi rates with MEV protection by settling orders using batch settlements and leverages P2P (CoW) orders in combination with fallback liquidity from AMMs and DEX aggregators.</SubTitle>
+          <SubTitle lineHeight={2}>COW Protocol enables top DeFi rates with MEV protection by settling orders using batch settlements and leverages P2P (CoW) orders in combination with fallback liquidity from AMMs and DEX aggregators.</SubTitle>
 
           <ButtonWrapper>
-            <Button><Link href="/">API Docs</Link></Button>
-            <Button variant='white'><Link href="/">Analytics</Link></Button>
+            <Button hasLink><Link href="/">API Docs</Link></Button>
+            <Button variant='white' hasLink><a href="https://dune.xyz/CryptoOrca/GP" target="_blank" rel="noopener nofollow">Analytics</a>  </Button>
           </ButtonWrapper>
         </div>
         <div>
-          <CowSlider>
-          </CowSlider>
+          <CowSlider batches={batchesData} />
         </div>
         <ScrollDownButton>Scroll down</ScrollDownButton>
       </Section>
@@ -43,11 +44,11 @@ export default function Home() {
       {/* 2nd section */}
       <Section flow={'column'}>
         <div>
-          <SectionImage margin={'0 auto -17rem'} height={'70rem'}><img loading="lazy" src="/images/cowBelt.jpg" /></SectionImage>
+          <SectionImage margin={'0 auto -18rem'} height={'68rem'}><img loading="lazy" src="/images/cowBelt.jpg" /></SectionImage>
           <h2>A fast growing protocol</h2>
           <SubTitle align="center">Getting you better prices, zero revert rates, <br />MEV protection and gas costs savings. <ExternalLink href="#">View analytics</ExternalLink></SubTitle>
           <Metrics>
-            {metrics.map(({ label, value }, i) =>
+            {metricsData.map(({ label, value }, i) =>
               <div key={i}>
                 <b>{value}</b>
                 <i>{label}</i>
@@ -58,7 +59,7 @@ export default function Home() {
       </Section>
 
       {/* 3rd section */}
-      <Section flow={'column'}>
+      <Section flow={'column'} fullWidth>
         <div>
           <SectionImage margin={'0 auto -6rem'}><img loading="lazy" src="/images/barn.jpg" /></SectionImage>
           <h3>More than a meta DEX aggregator</h3>
@@ -242,6 +243,16 @@ export default function Home() {
         </div>
       </Section>
 
-    </Layout>
+    </Layout >
   )
+}
+
+export async function getStaticProps() {
+  const siteConfigData = SiteConfig
+  const batchesData = batches
+  const metricsData = metrics
+
+  return {
+    props: { batchesData, metricsData, siteConfigData }
+  }
 }

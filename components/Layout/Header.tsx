@@ -73,7 +73,7 @@ export default function Header(props: LayoutProps) {
         ))}
       </Menu>
 
-      <Button paddingLR={2.4}><Link href="/">Trade on CowSwap</Link></Button>
+      <Button paddingLR={2.4}><a href="https://cowswap.exchange/#/swap" target="_blank" rel="noopener nofollow">Trade on CowSwap</a></Button>
 
     </Wrapper>
   )

@@ -13,6 +13,7 @@
     "classnames": "^2.3.1",
     "date-fns": "^2.25.0",
     "gray-matter": "^4.0.3",
+    "inter-ui": "^3.19.3",
     "make-plural": "^7.0.0",
     "next": "latest",
     "polished": "^4.1.3",

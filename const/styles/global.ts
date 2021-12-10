@@ -14,10 +14,30 @@ const GlobalStyles = createGlobalStyle`
     color: ${Color.white};
     box-sizing: border-box;
     scroll-behavior: smooth;
+    font-variant: none;
     text-rendering: geometricPrecision;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-feature-settings: 'ss01' on, 'ss02' on, 'cv01' on, 'cv03' on;
     scrollbar-color: ${Color.orange} ${Color.black};
+
+    html,
+    input,
+    textarea,
+    button {
+      font-family: 'Inter', sans-serif;
+      font-display: fallback;
+  }
+
+  @supports (font-variation-settings: normal) {
+    html,
+    input,
+    textarea,
+    button {
+      font-family: 'Inter var', sans-serif;
+    }
+  }
 
     &::-webkit-scrollbar {
       width: 1.6rem;
