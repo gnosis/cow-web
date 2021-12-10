@@ -4,6 +4,7 @@ export const batches = [
     label: 'Full CoW',
     orders: 12,
     gasPerOrder: 30,
+    description: "For some orders a CoW was found. Users saved both on individual gas costs and LP fees.",
     batchURL: 'https://etherscan.io/tx/0x691d1a8ba39c036e841b6e2ed970f9068ac4a27b61955afb852f11019f2ff4d8',
     visual: 'cow-graph-partialCow.png',
     bars: [
@@ -18,6 +19,7 @@ export const batches = [
     label: 'Partial CoW',
     orders: 4,
     gasPerOrder: 21,
+    description: "Description for Partial Cow should be placed in here.",
     batchURL: '/',
     visual: 'cow-graph-partialCow.png',
     bars: [
@@ -32,6 +34,7 @@ export const batches = [
     label: 'No CoW',
     orders: 8,
     gasPerOrder: 11,
+    description: "Description for No Cow should be placed in here.",
     batchURL: '/',
     visual: 'cow-graph-partialCow.png',
     bars: [

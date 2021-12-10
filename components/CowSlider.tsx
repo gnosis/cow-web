@@ -54,6 +54,10 @@ export const CowTop = styled.div`
     color: ${Color.orange};
     font-style: normal;
   }
+
+  > span > a {
+    font-size: 1.4rem;
+  }
 `
 
 export const CowTabs = styled.div`
@@ -89,7 +93,7 @@ export const CowSliderDescription = styled.div`
   display: block;
   line-height: 1.2;
   font-size: 1.3rem;
-  margin: 1.2rem 0 0;
+  margin: 2.4rem 0 1.2rem;
 
   > a {
     display: inline;
@@ -166,17 +170,21 @@ function getNetworkConfig(networkID) {
 
 export default function CowSlider() {
   const [activeBatch, setActiveBatch] = useState(1);
+  const activeBatchData = batches.length > 0 && Array(batches.find(b => b.id === activeBatch))
 
   return (
     <Wrapper>
       <CowTop>
         <span>
           <b>Batch Settlement Example</b>
-          {batches.length > 0 && Array(batches.find(b => b.id === activeBatch)).map(({ orders, gasPerOrder }) =>
-            <ol>
-              <li>Orders: <i>{orders}</i></li>
-              <li>Gas per order: <i>~${gasPerOrder}</i></li>
-            </ol>
+          {activeBatchData.map(({ orders, gasPerOrder, batchURL }) =>
+            <>
+              <ol>
+                <li>Orders: <i>{orders}</i></li>
+                <li>Gas per order: <i>~${gasPerOrder}</i></li>
+              </ol>
+              <ExternalLink href={batchURL} target="_blank" rel="noopener nofollow">View on Etherscan</ExternalLink>
+            </>
           )
           }
         </span>
@@ -195,8 +203,10 @@ export default function CowSlider() {
         </CowTabs>}
       </CowTop>
 
-      <CowSliderDescription>For some orders a CoW was found. Users saved both on individual gas costs and LP fees. <ExternalLink href="/" target="_blank" rel="noopener nofollow">View on Etherscan</ExternalLink>
-      </CowSliderDescription>
+      {activeBatchData.map(({ description }) =>
+        <CowSliderDescription>{description}</CowSliderDescription>
+      )
+      }
 
       <CowVisual>
         <img src="images/cow-graph-partialCow.png" alt="Partial CoW" />
