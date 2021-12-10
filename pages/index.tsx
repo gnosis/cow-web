@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { GetStaticProps } from 'next'
 
-import { batches } from '../const/batches'
 import Layout from '../components/Layout'
 import { ExternalLink } from '../const/styles/global'
 import { ButtonWrapper } from '../components/Button'
@@ -36,7 +36,7 @@ export default function Home({ batchesData, metricsData, siteConfigData }) {
           </ButtonWrapper>
         </div>
         <div>
-          <CowSlider batches={batchesData} />
+          <CowSlider />
         </div>
         <ScrollDownButton>Scroll down</ScrollDownButton>
       </Section>
@@ -247,12 +247,11 @@ export default function Home({ batchesData, metricsData, siteConfigData }) {
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const siteConfigData = SiteConfig
-  const batchesData = batches
   const metricsData = metrics
 
   return {
-    props: { batchesData, metricsData, siteConfigData }
+    props: { metricsData, siteConfigData }
   }
 }

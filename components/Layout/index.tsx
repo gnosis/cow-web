@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 
-import Head from 'next/head'
 
+import Head from 'next/head'
 import { PropsWithChildren } from 'react'
+
 import Header from './Header'
 import Footer from './Footer'
 
 export type LayoutProps = PropsWithChildren<{
+  mainMenu?: {
+    id: number;
+    title: string;
+    url: string;
+  }[]
 }>
 
 const Wrapper = styled.div`
@@ -25,8 +31,7 @@ const Content = styled.main`
   flex-flow: column wrap;
 `
 
-export default function Layout(props: LayoutProps) {
-  const { children } = props
+export default function Layout({ children, mainMenu }: LayoutProps) {
 
   return (
     <>
@@ -36,9 +41,8 @@ export default function Layout(props: LayoutProps) {
 
       <Wrapper>
         <Header />
-
-          <Content>{children}</Content>
-          <Footer />
+        <Content>{children ? children : 'No content found'}</Content>
+        <Footer />
 
       </Wrapper>
     </>

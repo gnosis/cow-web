@@ -1,12 +1,9 @@
 import styled from 'styled-components';
-// import Image from 'next/image'
 import Link from 'next/link'
 import { transparentize } from 'polished'
-
-import { LayoutProps } from '.'
-import { mainMenu } from '../../const/menu'
 import Button from '../Button'
 import { Color, Font } from '../../const/styles/variables'
+import { mainMenu } from '../../const/menu'
 
 const LogoImage = 'images/logo.svg'
 
@@ -55,7 +52,7 @@ const Logo = styled.div`
   cursor: pointer;
 `
 
-export default function Header(props: LayoutProps) {
+export default function Header() {
 
   return (
     <Wrapper>

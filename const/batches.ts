@@ -1,5 +1,5 @@
-export const batches = {
-  fullCow: {
+export const batches = [
+  {
     id: 1,
     label: 'Full CoW',
     orders: 12,
@@ -13,7 +13,7 @@ export const batches = {
       { id: 4, network: 'COW', percent: 55 },
     ]
   },
-  partialCow: {
+  {
     id: 2,
     label: 'Partial CoW',
     orders: 4,
@@ -21,13 +21,13 @@ export const batches = {
     batchURL: '/',
     visual: 'cow-graph-partialCow.png',
     bars: [
-      { id: 1, network: 'UNIV3', percent: 15 },
-      { id: 2, network: '0X', percent: 15 },
-      { id: 3, network: 'BAL', percent: 15 },
+      { id: 1, network: 'PSP', percent: 5 },
+      { id: 2, network: '0X', percent: 25 },
+      { id: 3, network: 'UNIV3', percent: 15 },
       { id: 4, network: 'COW', percent: 55 },
     ]
   },
-  noCow: {
+  {
     id: 3,
     label: 'No CoW',
     orders: 8,
@@ -35,10 +35,10 @@ export const batches = {
     batchURL: '/',
     visual: 'cow-graph-partialCow.png',
     bars: [
-      { id: 1, network: 'UNIV3', percent: 15 },
-      { id: 2, network: '0X', percent: 15 },
-      { id: 3, network: 'BAL', percent: 15 },
-      { id: 4, network: 'COW', percent: 55 },
+      { id: 1, network: 'UNIV3', percent: 1 },
+      { id: 2, network: '0X', percent: 10 },
+      { id: 3, network: 'BAL', percent: 21 },
+      { id: 4, network: 'COW', percent: 68 },
     ]
   }
-}
+]

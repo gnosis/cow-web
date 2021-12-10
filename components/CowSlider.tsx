@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { batches } from '../const/batches'
 import { ExternalLink } from '../const/styles/global'
 import { Color, Font } from '../const/styles/variables'
 import { transparentize } from 'polished'
@@ -80,6 +81,7 @@ export const CowTabItem = styled.div<{ active?: boolean, position?: number }>`
   order: ${({ position }) => position ? position : '0'};
   line-height: 1;
   transition: background 0.2 ease-in-out, color 0.2 ease-in-out;
+  border: 0.5rem solid ${Color.black};
 `
 
 export const CowSliderDescription = styled.div`
@@ -109,47 +111,61 @@ export const CowVisual = styled.div`
 export const CowBarWrapper = styled.div`
   display: flex;
   width: 100%;
+  gap: 0.7rem;
 `
 
-export const CowBar = styled.div<{ position?: number, percent?: number, network?: string }>`
-  display: inline-block;
-  width: ${({ percent }) => percent ? `${percent}%` : '0%'};
-  height: 0.3rem;
-  order: ${({ position }) => position ? position : '0'};
-
-  &::after {
-    content: attr(data-label);
-    display: block;
-  }
-`
-
-function getNetworkLabel(networkID) {
-  switch (networkID) {
-    case 'UNIV3':
-      return 'Uniswap V3'
-      break;
-    case 'UNIV2':
-      return 'Uniswap V2'
-      break;
-    case '0X':
-      return '0x'
-      break;
-    case 'PSP':
-      return 'ParaSwap'
-      break;
-    case 'BAL':
-      return 'BALANCER'
-      break;
-    case 'COW':
-      return 'CoW Protocol (P2P)'
-      break;
-    default:
-      return 'Unkown Network'
+interface TCowBar {
+  position?: number,
+  percent?: number,
+  network: {
+    label: string,
+    color: string
   }
 }
 
-export default function CowSlider({ batches }) {
-  const [activeTab, setActiveTab] = useState(1);
+export const CowBar = styled.div<TCowBar>`
+  display: flex;
+  width: ${({ percent }) => percent ? `${percent}%` : '0%'};
+  height: 0.5rem;
+  order: ${({ position }) => position ? position : '0'};
+  background: ${({ network }) => network.color};
+  transition: background 0.5s ease-in-out, width 0.5s ease-in-out;
+  
+  &::after {
+    content: attr(data-label);
+    display: block;
+    margin: 1.5rem 0 0;
+    font-size: 1.3rem;
+  }
+`
+
+function getNetworkConfig(networkID) {
+  switch (networkID) {
+    case 'UNIV3':
+      return { label: 'Uniswap V3', color: "#FF008A" }
+      break;
+    case 'UNIV2':
+      return { label: 'Uniswap V2', color: "#FF008A" }
+      break;
+    case '0X':
+      return { label: '0x', color: "#4DAA98" }
+      break;
+    case 'PSP':
+      return { label: 'Paraswap', color: "blue" }
+      break;
+    case 'BAL':
+      return { label: 'Balancer', color: "#772CF5" }
+      break;
+    case 'COW':
+      return { label: 'CoW Protocol (P2P)', color: Color.orange }
+      break;
+    default:
+      return { label: 'Unkown network', color: Color.grey }
+  }
+}
+
+export default function CowSlider() {
+  const [activeBatch, setActiveBatch] = useState(1);
 
   return (
     <Wrapper>
@@ -162,15 +178,15 @@ export default function CowSlider({ batches }) {
           </ol>
         </span>
 
-        {Object.keys(batches).length > 0 && <CowTabs>
-          {Object.keys(batches).map((item) =>
+        {batches.length > 0 && <CowTabs>
+          {batches.map((item) =>
             <CowTabItem
-              key={batches[item].id || 0}
-              position={batches[item].id || 0}
-              active={batches[item].id === activeTab || false}
-              onClick={() => { setActiveTab(batches[item].id) }}
+              key={item.id || 0}
+              position={item.id || 0}
+              active={item.id === activeBatch || false}
+              onClick={() => { setActiveBatch(item.id) }}
             >
-              {batches[item].label}
+              {item.label}
             </CowTabItem>
           )}
         </CowTabs>}
@@ -183,22 +199,20 @@ export default function CowSlider({ batches }) {
         <img src="images/cow-graph-partialCow.png" alt="Partial CoW" />
       </CowVisual>
 
-      {Object.keys(batches).length > 0 && <CowBarWrapper>
-        {Object.keys(batches).map(item =>
-          batches[item].bars.map(bar => {
-            { console.log(JSON.stringify(getNetworkLabel(bar.network))) }
-            {
-              bar.network && <CowBar
-                key={bar.id || 0}
-                position={bar.id}
-                percent={bar.percent}
-                network={bar.network}
-                data-label={getNetworkLabel(bar.network)}
-              />
-            }
+      {batches.length > 0 && <CowBarWrapper>
+        {Array(batches.find(b => b.id === activeBatch)).map(batch => {
+          return (batch.bars).map(({ id, network, percent }) => {
+            return network && <CowBar
+              key={id || 0}
+              position={id}
+              percent={percent}
+              network={getNetworkConfig(network)}
+              data-label={getNetworkConfig(network).label}
+            />
           })
-        )}
+        })}
       </CowBarWrapper>}
+
     </Wrapper>
   )
 }
