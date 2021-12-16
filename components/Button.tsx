@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { transparentize } from 'polished'
-import { Defaults, Color, Font, Media } from '../const/styles/variables'
+import { Defaults, Color, Font, Media } from 'const/styles/variables'
 
 type ButtonProps = {
   wrapText?: boolean
@@ -51,6 +51,11 @@ export const ButtonWrapper = styled.div`
 
   ${Media.mobile} {
     justify-content: center;
+    flex-flow: column wrap;
+
+    > ${Wrapper} {
+      width: 100%;
+    }
   }
 `
 

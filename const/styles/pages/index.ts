@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { transparentize } from 'polished'
-import { Color, Font, Media } from '../../../const/styles/variables'
+import { Color, Font, Media } from 'const/styles/variables'
 
 
-export const Section = styled.section<{ hero?: boolean, flow?: string, fullWidth?: boolean }>`
+export const Section = styled.section<{ hero?: boolean, colorVariant?: string, flow?: string, fullWidth?: boolean, mobileSwitchOrder?: boolean }>`
   display: flex;
   width: 100%;
   max-width: ${({ fullWidth }) => fullWidth ? '100vw' : '148rem'};
@@ -13,6 +13,11 @@ export const Section = styled.section<{ hero?: boolean, flow?: string, fullWidth
   margin: 10rem auto;
   position: relative;
   z-index: 1;
+
+  ${({ colorVariant }) => colorVariant === 'orange' && `
+    background: ${Color.orange};
+    color: ${Color.black};
+  `}
 
   ${Media.mobile} {
     height: auto;
@@ -48,6 +53,24 @@ export const Section = styled.section<{ hero?: boolean, flow?: string, fullWidth
     }
   }
 
+  ${({ mobileSwitchOrder }) => mobileSwitchOrder && `
+    > div:first-child {
+      ${Media.mobile} {
+        order: 2;
+      }
+    }
+  `}
+
+  ${({ mobileSwitchOrder }) => mobileSwitchOrder && `
+    > div:last-child {
+      ${Media.mobile} {
+        order: 1;
+      }
+    }
+  `}
+
+  }
+
    h1, h2, h3 {
     font-size: ${({ hero }) => hero ? "6.8rem" : "5.4rem"};
     line-height: 1.2;
@@ -73,7 +96,7 @@ export const TopGradient = styled.div`
   left: 0;
   top: 0;
   z-index: 0;
-  opacity: 0.2;
+  opacity: 0.5;
 
   /* &::after {
     content: "";
@@ -120,6 +143,7 @@ export const SectionImage = styled.div<{ margin?: string, height?: string, width
     height: initial;
   }
 
+  > a > img,
   > img {
     object-fit: contain;
     width: 100%;
@@ -143,7 +167,7 @@ export const ScrollDownButton = styled.button`
   color: ${Color.grey};
   gap: 1rem;
   font-size: ${Font.sizeDefault};
-  animation: floating 2s linear 1s infinite alternate;
+  /* animation: floating 2s linear 1s infinite alternate; */
 
   ${Media.mobile} {
     display: none;
@@ -157,10 +181,10 @@ export const ScrollDownButton = styled.button`
     background: url('images/icons/handDown.svg') no-repeat center/contain;
   }
 
-  @keyframes floating {
+  /* @keyframes floating {
     from {transform: translateY(0)}
     to {transform: translateY(-1rem)}
-  }
+  } */
 `
 
 export const Metrics = styled.div`
@@ -169,6 +193,10 @@ export const Metrics = styled.div`
   width: 100%;
   justify-content: center;
   gap: 12rem;
+
+  ${Media.mobile} {
+    gap: 4rem;
+  }
 
   > div {
     flex: 0 1 auto;
@@ -182,12 +210,20 @@ export const Metrics = styled.div`
   > div > b {
     font-size: 7.4rem;
     font-weight: ${Font.weightNormal};
+
+    ${Media.mobile} {
+      font-size: 4rem;
+    }
   }
 
   > div > i {
     font-style: normal;
     font-size: 1.5rem;
     color: ${transparentize(0.2, Color.grey)};
+
+    ${Media.mobile} {
+      font-size: 1.3rem;
+    }
   }
 `
 
@@ -208,7 +244,7 @@ export const IconList = styled.ol`
 export const IconListItem = styled.li<{ icon?: string }>`
   display: grid;
   grid-template-columns: 6.5rem 1fr; 
-  flex-flow: row;
+  flex-flow: row wrap;
   align-items: flex-start;
   justify-content: flex-start;
   justify-items: flex-start;
@@ -254,6 +290,7 @@ export const CheckList = styled.ol`
   flex-flow: column wrap;
   padding: 0;
   margin: 0;
+  line-height: 1.2;
 
   > li {
     display: flex;
@@ -284,6 +321,12 @@ export const ApiTool = styled.div`
   padding: 2.4rem 4.8rem;
   font-size: ${Font.sizeDefault};
 
+  ${Media.mobile} {
+    max-height: initial;
+    border-radius: 2rem;
+    padding: 0 2.4rem 2.4rem;
+  }
+
   > h4 {
     font-weight: ${Font.weightNormal};
     font-size: 2.4rem;
@@ -294,12 +337,11 @@ export const ApiTool = styled.div`
 
 export const ApiParams = styled.div`
   display: flex;
-  flex-flow: row;
+  flex-flow: row wrap;
   gap: 4rem;
   margin: 1.6rem 0 4rem;
-  
 
-   > span {
+  > span {
     display: flex;
     flex-flow: column wrap;
   }
@@ -327,6 +369,12 @@ export const ApiUrl = styled.div`
   border-radius: 1.2rem;
   gap: 0;
 
+  ${Media.mobile} {
+    flex-flow: column wrap;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
   > b {
     margin: 0 0.6rem 0 0;
     padding: 0;
@@ -336,6 +384,7 @@ export const ApiUrl = styled.div`
 
   > p {
     display: inline-block;
+    line-height: 1.2;
   }
 
   > p > span {
@@ -365,6 +414,7 @@ export const ApiOutput = styled.div`
     overflow-y: auto;
     font-size: 1.4rem;
     height: 23rem;
+    word-break: break-all;
   }
 
   > div > span {

@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app'
-import GlobalStyles from '../const/styles/global'
+import GlobalStyles from 'const/styles/global'
 import Head from 'next/head'
-import { meta } from '../const/meta'
+import { meta } from 'const/meta'
 
 // import { i18n } from '@lingui/core'
 // import { I18nProvider } from "@lingui/react";

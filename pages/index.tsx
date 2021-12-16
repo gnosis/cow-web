@@ -6,7 +6,7 @@ import Layout from '../components/Layout'
 import { ExternalLink } from '../const/styles/global'
 import { ButtonWrapper } from '../components/Button'
 import CowSlider from '../components/CowSlider'
-import { Section, TopGradient, SubTitle, ScrollDownButton, SectionImage, IconList, IconListItem, Metrics, CheckList, ApiTool, ApiUrl, ApiOutput, ApiParams } from '../const/styles/pages/index'
+import { Section, SubTitle, ScrollDownButton, SectionImage, IconList, IconListItem, Metrics, CheckList, ApiTool, ApiUrl, ApiOutput, ApiParams } from '../const/styles/pages/index'
 import SocialList from '../components/SocialList'
 
 // import { Trans } from '@lingui/macro'
@@ -23,8 +23,6 @@ export default function Home({ metricsData, siteConfigData }) {
       <Head>
         <title>{title} - {descriptionShort}</title>
       </Head>
-
-      <TopGradient />
 
       {/* Hero/1st section */}
       <Section hero>
@@ -62,7 +60,7 @@ export default function Home({ metricsData, siteConfigData }) {
       </Section>
 
       {/* 3rd section */}
-      <Section flow={'column'} fullWidth>
+      <Section flow={'column'} fullWidth id="about">
         <div>
           <SectionImage margin={'0 auto -6rem'}><img loading="lazy" src="/images/barn.jpg" /></SectionImage>
           <h3>More than a meta DEX aggregator</h3>
@@ -119,12 +117,15 @@ export default function Home({ metricsData, siteConfigData }) {
         <div>
           <h3>The life cycle of a CoW order</h3>
           <SubTitle align='center'>The protocol improves prices for users by batching trades, finding coincidence of wants (CoWs) <br />and tapping into all on chain liquidity - including aggregators. <Link href="#">Read More</Link></SubTitle>
-          <SectionImage margin={'0'}><img loading="lazy" src="/images/how-it-works.jpg" /></SectionImage>
+          <SectionImage margin={'0'}>
+            <a href="/images/how-it-works.jpg" target="_blank" rel="nofollow noopener"><img loading="lazy" src="/images/how-it-works.jpg" /></a>
+            <ButtonWrapper className="mobileOnly"><Button label={'View Full Image'} href="/images/how-it-works.jpg" target="_blank" rel="nofollow noopener" /></ButtonWrapper>
+          </SectionImage>
         </div>
       </Section>
 
       {/* 5th section */}
-      <Section>
+      <Section mobileSwitchOrder id="developers">
         <div>
           <ApiTool>
             <h4>Get a price quote</h4>
@@ -229,7 +230,7 @@ export default function Home({ metricsData, siteConfigData }) {
       </Section>
 
       {/* 7th section */}
-      <Section flow={'column'}>
+      <Section flow={'column'} id="community">
         <div>
           <h3>Join the community</h3>
           <SubTitle align={'center'} maxWidth={62}>Learn more about COW Protocol, chat with the team, others in the community, and have your say in shaping the future of decentralized finance.</SubTitle>

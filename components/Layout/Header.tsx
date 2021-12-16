@@ -1,16 +1,26 @@
 import styled from 'styled-components';
 import Link from 'next/link'
 import { transparentize } from 'polished'
-import Button from '../Button'
-import { Color, Font, Media } from '../../const/styles/variables'
+import Button from 'components/Button'
+import { Color, Font, Media } from 'const/styles/variables'
+import { InView } from 'react-intersection-observer';
 
 const LogoImage = 'images/logo.svg'
+
+const Pixel = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    display:block;
+    background: transparent;
+`
 
 const Wrapper = styled.header`
   z-index: 10;
   width: 100%;
-  position: sticky;
-  top: 0;
+  position: relative;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
@@ -18,12 +28,17 @@ const Wrapper = styled.header`
   background: transparent;
   padding: 2.4rem 5.6rem;
   margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: background 0.5s ease-in-out;
 
   ${Media.mobile} {
     padding: 3rem;
   }
 
-  &.scrolled {
+  &.sticky {
+
     background: ${transparentize(0.4, Color.black)};
     backdrop-filter: blur(60px);
   }
@@ -73,23 +88,29 @@ export default function Header({ siteConfig, menu }) {
   const swapURL = siteConfig.url.swap
 
   return (
-    <Wrapper>
-      <Link href="/">
-        <Logo />
-      </Link>
+    <InView threshold={1} delay={500}>
+      {({ inView, ref }) => (
+        <>
+          <Pixel ref={ref} />
+          <Wrapper className={!inView && 'sticky'}>
 
-      <Menu>
-        {menu.map(({ id, title, url }) => (
-          <li key={id}>
-            <Link href={url}>
-              <a>{title}</a>
+            <Link href="/">
+              <Logo />
             </Link>
-          </li>
-        ))}
-      </Menu>
 
-      <Button paddingLR={2.4} href={swapURL} label={'Trade on CowSwap'} target="_blank" rel="noopener nofollow" />
+            <Menu>
+              {menu.map(({ id, title, url, target, rel }) => (
+                <li key={id}>
+                  <a href={url} target={target} rel={rel}>{title}</a>
+                </li>
+              ))}
+            </Menu>
 
-    </Wrapper>
+            <Button paddingLR={2.4} href={swapURL} label={'Trade on CowSwap'} target="_blank" rel="noopener nofollow" />
+
+          </Wrapper>
+        </>
+      )}
+    </InView>
   )
 }

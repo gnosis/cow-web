@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components'
-import { Color, Font } from './variables'
+import { Color, Font, Media } from 'const/styles/variables'
 
 const GlobalStyles = createGlobalStyle`
   html, body {  
@@ -150,6 +150,14 @@ const GlobalStyles = createGlobalStyle`
   
   .noScroll {
     overflow: hidden;
+  }
+
+  .mobileOnly {
+    display: none;
+    
+    ${Media.mobile} {
+      display: block;
+    }
   }
 `
 

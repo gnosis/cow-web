@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import Link from 'next/link'
 // import { transparentize } from 'polished'
-import { Color, Font, Media } from '../../const/styles/variables'
-import SocialList from '../../components/SocialList'
+import { Color, Font, Media } from 'const/styles/variables'
+import SocialList from 'components/SocialList'
 
 const LogoImage = 'images/logo.svg'
 

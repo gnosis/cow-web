@@ -1,10 +1,10 @@
-import { siteConfig } from './meta'
+import { siteConfig } from 'const/meta'
 
 export const mainMenu = [
-  { id: 0, title: 'Developers', url: '/' },
-  { id: 1, title: 'About', url: '/' },
-  { id: 2, title: 'Community', url: '/' },
-  { id: 3, title: 'Analytics', url: '/' },
+  { id: 0, title: 'Developers', url: '/#developers' },
+  { id: 1, title: 'About', url: '/#about' },
+  { id: 2, title: 'Community', url: '/#community' },
+  { id: 3, title: 'Analytics', url: siteConfig.url.analytics, target: "_blank", rel: "noopener nofollow" },
 ]
 
 export const footerMenu = [

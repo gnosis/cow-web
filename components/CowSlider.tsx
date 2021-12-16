@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { batches } from '../const/batches'
-import { ExternalLink } from '../const/styles/global'
-import { Color, Font, Media } from '../const/styles/variables'
+import { batches } from 'const/batches'
+import { ExternalLink } from 'const/styles/global'
+import { Color, Font, Media } from 'const/styles/variables'
 import { transparentize } from 'polished'
 
 export const Wrapper = styled.div`
@@ -19,10 +19,10 @@ export const Wrapper = styled.div`
   padding: 4.8rem;
   font-size: ${Font.sizeDefault};
   color: ${Color.grey};
+  position: relative;
 
   ${Media.mobile} {
     max-height: initial;
-    padding: 5rem 2.4rem;
     border-radius: 2rem;
     padding: 3rem 2.4rem 5rem;
   }
@@ -78,7 +78,7 @@ export const CowTop = styled.div`
 
   > span > a {
     font-size: 1.4rem;
-    
+
     ${Media.mobile} {
       text-align: center;
     }
@@ -100,7 +100,8 @@ export const CowTabs = styled.div`
   ${Media.mobile} {
     flex: 1 1 100%;
     border-radius: 2rem;
-    margin: 3.2rem 0 0;
+    order: -1;
+    margin: 0 0 3.2rem;
   }
 `
 
@@ -186,6 +187,10 @@ export const CowBar = styled.div<TCowBar>`
     margin: 1.5rem 0 0;
     font-size: 1.3rem;
     white-space: pre;
+
+    ${Media.mobile} {
+      content: attr(data-label) " (${({ percent }) => percent}%)";
+    }
   }
 `
 
@@ -223,9 +228,9 @@ export default function CowSlider() {
       <CowTop>
         <span>
           <b>Batch Settlement Example</b>
-          {activeBatchData.map(({ orders, gasPerOrder, batchURL }) =>
+          {activeBatchData.map(({ orders, gasPerOrder, batchURL }, index) =>
             <>
-              <ol>
+              <ol key={index}>
                 <li>Orders: <i>{orders}</i></li>
                 <li>Gas per order: <i>~${gasPerOrder}</i></li>
               </ol>

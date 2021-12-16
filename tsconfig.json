@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/const/*": ["const/*"],
+      "@/pages/*": ["pages/*"]
+    },
     "target": "es5",
     "lib": [
       "dom",
@@ -28,8 +34,9 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "lib/i18n.bak"  ],
+, "lib/i18n.bak", "pages/terms.bak"  ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+    "typeRoots": [ "./types", "./node_modules/@types"],
 }
