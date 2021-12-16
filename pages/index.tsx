@@ -6,15 +6,16 @@ import Layout from '../components/Layout'
 import { ExternalLink } from '../const/styles/global'
 import { ButtonWrapper } from '../components/Button'
 import CowSlider from '../components/CowSlider'
-import { Section, SubTitle, ScrollDownButton, SectionImage, IconList, IconListItem, Metrics, CheckList, SocialList, ApiTool, ApiUrl, ApiOutput, ApiParams } from '../const/styles/pages/index'
+import { Section, TopGradient, SubTitle, ScrollDownButton, SectionImage, IconList, IconListItem, Metrics, CheckList, ApiTool, ApiUrl, ApiOutput, ApiParams } from '../const/styles/pages/index'
+import SocialList from '../components/SocialList'
 
 // import { Trans } from '@lingui/macro'
-import { SiteConfig } from '../const/meta'
+import { siteConfig } from '../const/meta'
 import metrics from '../const/metrics'
 import Button from '../components/Button'
 
-export default function Home({ batchesData, metricsData, siteConfigData }) {
-  const { title, descriptionShort, social } = siteConfigData
+export default function Home({ metricsData, siteConfigData }) {
+  const { title, descriptionShort, social, url } = siteConfigData
 
   return (
     <Layout>
@@ -22,6 +23,8 @@ export default function Home({ batchesData, metricsData, siteConfigData }) {
       <Head>
         <title>{title} - {descriptionShort}</title>
       </Head>
+
+      <TopGradient />
 
       {/* Hero/1st section */}
       <Section hero>
@@ -31,8 +34,8 @@ export default function Home({ batchesData, metricsData, siteConfigData }) {
           <SubTitle lineHeight={2}>COW Protocol enables top DeFi rates with MEV protection by settling orders using batch settlements and leverages P2P (CoW) orders in combination with fallback liquidity from AMMs and DEX aggregators.</SubTitle>
 
           <ButtonWrapper>
-            <Button hasLink><Link href="/">API Docs</Link></Button>
-            <Button variant='white' hasLink><a href="https://dune.xyz/CryptoOrca/GP" target="_blank" rel="noopener nofollow">Analytics</a>  </Button>
+            <Button href={url.docs} target="_blank" label="API Docs" />
+            <Button variant='white' href={url.analytics} label='Analytics' target="_blank" rel="noopener nofollow" />
           </ButtonWrapper>
         </div>
         <div>
@@ -177,7 +180,7 @@ export default function Home({ batchesData, metricsData, siteConfigData }) {
           </CheckList>
 
           <ButtonWrapper>
-            <Button><Link href="/">API Docs</Link></Button>
+            <Button href="/" label="Api Docs" />
           </ButtonWrapper>
         </div>
       </Section>
@@ -230,16 +233,7 @@ export default function Home({ batchesData, metricsData, siteConfigData }) {
         <div>
           <h3>Join the community</h3>
           <SubTitle align={'center'} maxWidth={62}>Learn more about COW Protocol, chat with the team, others in the community, and have your say in shaping the future of decentralized finance.</SubTitle>
-          <SocialList>
-            {Object.keys(social).map((item, i) =>
-              <li key={i}>
-                <a href={social[item].url} target="_blank" rel="noopener nofollow">
-                  <img src={`images/icons/${social[item].label.toLowerCase()}.svg`}></img>
-                  <b>{social[item].label}</b>
-                </a>
-              </li>
-            )}
-          </SocialList>
+          <SocialList social={social} />
         </div>
       </Section>
 
@@ -248,10 +242,11 @@ export default function Home({ batchesData, metricsData, siteConfigData }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const siteConfigData = SiteConfig
+  const siteConfigData = siteConfig
+  const { social } = siteConfig
   const metricsData = metrics
 
   return {
-    props: { metricsData, siteConfigData }
+    props: { metricsData, siteConfigData, social }
   }
 }

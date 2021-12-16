@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { batches } from '../const/batches'
 import { ExternalLink } from '../const/styles/global'
-import { Color, Font } from '../const/styles/variables'
+import { Color, Font, Media } from '../const/styles/variables'
 import { transparentize } from 'polished'
 
 export const Wrapper = styled.div`
@@ -10,14 +10,22 @@ export const Wrapper = styled.div`
   flex-flow: column wrap;
   width: 100%;
   height: 100%;
-  background: ${Color.black};
-  border: 0.1rem solid ${Color.border};
+  background: ${transparentize(0.90, Color.black)};
+  backdrop-filter: blur(5rem);
+  border: 0.1rem solid ${transparentize(0.9, Color.white)};
   backdrop-filter: blur(6rem);
   border-radius: 7rem;
   max-height: 64rem;
   padding: 4.8rem;
   font-size: ${Font.sizeDefault};
   color: ${Color.grey};
+
+  ${Media.mobile} {
+    max-height: initial;
+    padding: 5rem 2.4rem;
+    border-radius: 2rem;
+    padding: 3rem 2.4rem 5rem;
+  }
 `
 
 export const CowTop = styled.div`
@@ -25,10 +33,19 @@ export const CowTop = styled.div`
   display: flex;
   flex-flow: row;
 
+  ${Media.mobile} {
+    flex-flow: column wrap;
+  }
+
   > span {
     display: flex;
     flex-flow: column wrap;
     flex: 1 1 50%;
+
+    ${Media.mobile} {
+      gap: 1rem;
+      align-content: center;
+    }
   }
 
   > span > b {
@@ -40,10 +57,14 @@ export const CowTop = styled.div`
   > span > ol {
     display: flex;
     list-style-type: none;
-    flex-flow: row;
+    flex-flow: row wrap;
     font-size: 1.3rem;
     padding: 0;
     gap: 2rem;
+
+    ${Media.mobile} {
+      justify-content: space-between;
+    }
   }
 
   > span > ol > li {
@@ -57,6 +78,10 @@ export const CowTop = styled.div`
 
   > span > a {
     font-size: 1.4rem;
+    
+    ${Media.mobile} {
+      text-align: center;
+    }
   }
 `
 
@@ -71,6 +96,12 @@ export const CowTabs = styled.div`
   padding: 0;
   border-radius: 4rem;
   gap: 0;
+
+  ${Media.mobile} {
+    flex: 1 1 100%;
+    border-radius: 2rem;
+    margin: 3.2rem 0 0;
+  }
 `
 
 export const CowTabItem = styled.div<{ active?: boolean, position?: number }>`
@@ -85,7 +116,15 @@ export const CowTabItem = styled.div<{ active?: boolean, position?: number }>`
   order: ${({ position }) => position ? position : '0'};
   line-height: 1;
   transition: background 0.2 ease-in-out, color 0.2 ease-in-out;
-  border: 0.5rem solid ${Color.black};
+  border: 0.5rem solid transparent;
+  flex: 1 1 auto;
+
+  ${Media.mobile} {
+    text-align: center;
+    line-height: 1.2;
+    padding: 1.2rem;
+    border-radius: 2rem;
+  }
 `
 
 export const CowSliderDescription = styled.div`
@@ -108,7 +147,8 @@ export const CowVisual = styled.div`
   > img {
     width: 100%;
     object-fit: contain;
-    height: 36.8rem;
+    height: auto;
+    padding: 2.4rem 0;
   }
 `
 
@@ -116,6 +156,11 @@ export const CowBarWrapper = styled.div`
   display: flex;
   width: 100%;
   gap: 0.7rem;
+
+  ${Media.mobile} {
+    flex-flow: column wrap;
+    gap: 4rem;
+  }
 `
 
 interface TCowBar {
@@ -140,6 +185,7 @@ export const CowBar = styled.div<TCowBar>`
     display: block;
     margin: 1.5rem 0 0;
     font-size: 1.3rem;
+    white-space: pre;
   }
 `
 

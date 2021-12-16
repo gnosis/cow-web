@@ -1,18 +1,16 @@
 import styled from 'styled-components';
-
-
-import Head from 'next/head'
 import { PropsWithChildren } from 'react'
 
+import { siteConfig } from '../../const/meta'
+import { mainMenu, footerMenu } from '../../const/menu'
 import Header from './Header'
 import Footer from './Footer'
 
 export type LayoutProps = PropsWithChildren<{
-  mainMenu?: {
-    id: number;
-    title: string;
-    url: string;
-  }[]
+  siteConfigData?: any // needs fix
+  metrics?: any // needs fix
+  mainMenuData?: any // needs fix
+  footerMenuData?: any // needs fix
 }>
 
 const Wrapper = styled.div`
@@ -31,19 +29,13 @@ const Content = styled.main`
   flex-flow: column wrap;
 `
 
-export default function Layout({ children, mainMenu }: LayoutProps) {
-
+export default function Layout({ children }: LayoutProps) {
   return (
     <>
-      <Head>
-
-      </Head>
-
       <Wrapper>
-        <Header />
+        <Header menu={mainMenu} siteConfig={siteConfig} />
         <Content>{children ? children : 'No content found'}</Content>
-        <Footer />
-
+        <Footer menu={footerMenu} siteConfig={siteConfig} />
       </Wrapper>
     </>
   )

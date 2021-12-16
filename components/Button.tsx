@@ -1,24 +1,26 @@
 import styled from 'styled-components'
 import { transparentize } from 'polished'
-import { Defaults, Color, Font } from '../const/styles/variables'
+import { Defaults, Color, Font, Media } from '../const/styles/variables'
 
 type ButtonProps = {
   wrapText?: boolean
   borderRadius?: number
   fontSize?: number
   paddingLR?: number
-  hasLink?: boolean
   variant?: string
-  children?: React.ReactNode
+  href?: string
+  label: string
+  target?: string
+  rel?: string
 }
 
-const Wrapper = styled.button<ButtonProps>`
+const Wrapper = styled.a<Omit<ButtonProps, "href" | "label" | "target" | "rel">>`
   display: flex;
   background: ${({ variant }) => variant === 'white' ? Color.black : transparentize(0.9, Color.orange)};
   flex-flow: row;
   border: 0.1rem solid ${({ variant }) => variant === 'white' ? transparentize(0.6, Color.grey) : Color.orange};
   color: ${({ variant }) => variant === 'white' ? Color.white : Color.orange};
-  padding: ${({ hasLink, paddingLR }) => hasLink ? '0' : paddingLR ? `0 ${paddingLR}rem` : '0 6rem'};
+  padding: ${({ paddingLR }) => paddingLR ? `0 ${paddingLR}rem` : '0 6rem'};
   box-sizing: border-box;
   border-radius: ${({ borderRadius }) => borderRadius ? borderRadius : Defaults.borderRadius};
   min-height: 5.6rem;
@@ -27,21 +29,17 @@ const Wrapper = styled.button<ButtonProps>`
   justify-content: center;
   transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
   white-space: ${({ wrapText }) => wrapText ? 'initial' : 'nowrap'};
+  font-weight: ${Font.weightNormal};
+  text-decoration: none;
+
+  ${Media.mobile} {
+    padding: 0 1.6rem;
+    min-height: 4.8rem;
+  }
 
   &:hover {
     background: ${({ variant }) => variant === 'white' ? Color.white : Color.orange};
     color: ${Color.black};
-  }
-
-  > a {
-    text-decoration: none;
-    color: inherit;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    ${({ hasLink }) => hasLink && '0 6rem'};
   }
 `
 
@@ -50,12 +48,26 @@ export const ButtonWrapper = styled.div`
   display: flex;
   gap: 1.6rem;
   width: 100%;
+
+  ${Media.mobile} {
+    justify-content: center;
+  }
 `
 
-export default function Button({ wrapText, borderRadius, fontSize, paddingLR, variant, children }: ButtonProps) {
+export default function Button({
+  wrapText,
+  borderRadius,
+  fontSize,
+  paddingLR,
+  variant,
+  href = "#",
+  label,
+  target,
+  rel
+}: ButtonProps) {
   return (
-    <Wrapper {...{ wrapText, borderRadius, fontSize, paddingLR, variant }}>
-      {children}
+    <Wrapper {...{ wrapText, borderRadius, fontSize, paddingLR, variant }} href={href} target={target} rel={rel}>
+      {label}
     </Wrapper>
   )
 }

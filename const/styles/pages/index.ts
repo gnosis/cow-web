@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { transparentize } from 'polished'
-import { Color, Font } from '../../../const/styles/variables'
+import { Color, Font, Media } from '../../../const/styles/variables'
 
 
 export const Section = styled.section<{ hero?: boolean, flow?: string, fullWidth?: boolean }>`
@@ -11,11 +11,26 @@ export const Section = styled.section<{ hero?: boolean, flow?: string, fullWidth
   flex-flow: ${({ flow }) => flow === 'column' ? 'column wrap' : 'row'};
   gap: 8rem;
   margin: 10rem auto;
+  position: relative;
+  z-index: 1;
+
+  ${Media.mobile} {
+    height: auto;
+    padding: 0 3.2rem;
+    max-width: 100%;
+    min-height: initial;
+    flex-flow: column wrap;
+  }
 
   // Hero specific styling
   ${({ hero }) => hero && `
     margin: 0 auto;
     min-height: calc(100vh - 8.1rem);
+
+    ${Media.mobile} {
+      min-height: initial;
+      padding: 5.6rem 3.2rem 0;
+    }
   `}
 
   > div {
@@ -26,15 +41,52 @@ export const Section = styled.section<{ hero?: boolean, flow?: string, fullWidth
     align-items: center;
     align-content: center;
     gap: 5rem;
+    z-index: 1;
+
+    ${Media.mobile} {
+      flex: 1 1 auto; 
+    }
   }
 
    h1, h2, h3 {
     font-size: ${({ hero }) => hero ? "6.8rem" : "5.4rem"};
     line-height: 1.2;
+    /* font-weight: ${({ hero }) => hero ? Font.weightNormal : Font.weightBold}; */
     font-weight: ${Font.weightBold};
     margin: 0;
     z-index: 1;
+
+    ${Media.mobile} {
+      font-size: 4rem;
+      text-align: center;
+    }
   }
+`
+
+export const TopGradient = styled.div`
+  background: url('images/gradient.svg') no-repeat center/cover;
+  filter: blur(10rem);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  opacity: 0.2;
+
+  /* &::after {
+    content: "";
+    background: url('images/noise.svg') repeat center/cover;
+    filter: contrast(170%) brightness(1000%);
+    mix-blend-mode: screen;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  } */
 `
 
 export const SubTitle = styled.p<{ maxWidth?: number, align?: string, lineHeight?: number }>`
@@ -46,6 +98,11 @@ export const SubTitle = styled.p<{ maxWidth?: number, align?: string, lineHeight
   text-align: ${({ align }) => align ? align : "left"};
   max-width: ${({ maxWidth }) => maxWidth && `${maxWidth}rem`};
   z-index: 1;
+
+  ${Media.mobile} {
+    font-size: 1.6rem;
+    text-align: ${({ align }) => align ? align : "center"};
+  }
 `
 
 export const SectionImage = styled.div<{ margin?: string, height?: string, width?: string }>`
@@ -59,11 +116,15 @@ export const SectionImage = styled.div<{ margin?: string, height?: string, width
   position: relative;
   z-index: 0;
 
-    > img {
-      object-fit: contain;
-      width: 100%;
-      height: inherit;
-    }
+  ${Media.mobile} {
+    height: initial;
+  }
+
+  > img {
+    object-fit: contain;
+    width: 100%;
+    height: inherit;
+  }
 `
 
 export const ScrollDownButton = styled.button`
@@ -83,6 +144,10 @@ export const ScrollDownButton = styled.button`
   gap: 1rem;
   font-size: ${Font.sizeDefault};
   animation: floating 2s linear 1s infinite alternate;
+
+  ${Media.mobile} {
+    display: none;
+  }
 
   &::before {
     content: "";
@@ -134,6 +199,10 @@ export const IconList = styled.ol`
   margin: 5.6rem auto 0;
   padding: 0;
   gap: 7rem 10rem;
+
+    ${Media.mobile} {
+      grid-template-columns: 1fr; 
+    }
 `
 
 export const IconListItem = styled.li<{ icon?: string }>`
@@ -165,53 +234,13 @@ export const IconListItem = styled.li<{ icon?: string }>`
 
   > span > b {
     font-size: 2.4rem;
+    line-height: 1.2;
   }
   
   > span > p {
     font-size: ${Font.sizeDefault};
     line-height: 1.6;
     color: ${Color.grey};
-  }
-`
-
-export const SocialList = styled.ol`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 110rem;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0;
-  gap: 7rem;
-  list-style-type: none;
-  color: ${Color.grey};
-  font-weight: ${Font.weightNormal};
-
-  > li > a {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    font-size: ${Font.sizeDefault};
-    line-height: 1;
-    text-decoration: none;
-    color: inherit;
-    font-weight: inherit;
-    padding: 2rem;
-    border-radius: 2rem;
-    border: 0.1rem solid transparent;
-    transition: color 0.2s ease-in-out, background 0.2s ease-in-out, border-color 0.2s ease-in-out;
-
-    &:hover {
-      background: ${transparentize(0.9, Color.orange)};
-      border: 0.1rem solid ${Color.orange};
-      color: ${Color.orange};
-    }
-  }
-
-  > li > a > b {
-    font-weight: inherit;
   }
 `
 

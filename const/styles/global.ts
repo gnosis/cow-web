@@ -102,6 +102,10 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1;
   }
 
+  ul, ol {
+    font-size: ${Font.sizeDefault};
+  }
+
   button {
     font-family: inherit;
     cursor: pointer;
@@ -156,7 +160,7 @@ export const ExternalLink = styled.a`
   &::after {
     content: "↗";
     color: inherit;
-    font-size: 1.6rem;
+    font-size: ${Font.sizeDefault};
     display: inline-block;
   }
 `

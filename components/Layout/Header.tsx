@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import Link from 'next/link'
 import { transparentize } from 'polished'
 import Button from '../Button'
-import { Color, Font } from '../../const/styles/variables'
-import { mainMenu } from '../../const/menu'
+import { Color, Font, Media } from '../../const/styles/variables'
 
 const LogoImage = 'images/logo.svg'
 
@@ -16,10 +15,18 @@ const Wrapper = styled.header`
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
-  background: ${transparentize(0.4, Color.black)};
-  backdrop-filter: blur(60px);
+  background: transparent;
   padding: 2.4rem 5.6rem;
   margin: 0 auto;
+
+  ${Media.mobile} {
+    padding: 3rem;
+  }
+
+  &.scrolled {
+    background: ${transparentize(0.4, Color.black)};
+    backdrop-filter: blur(60px);
+  }
 `
 
 const Menu = styled.ol`
@@ -29,6 +36,10 @@ const Menu = styled.ol`
   color: ${Color.grey};
   padding: 0;
   margin: 0;
+
+  ${Media.mobile} {
+    display: none;
+  }
 
   > li:not(:last-of-type) {
     margin: 0 3.6rem 0 0;
@@ -50,9 +61,16 @@ const Logo = styled.div`
   height: 5.7rem;
   background: url(${LogoImage}) no-repeat center/contain;
   cursor: pointer;
+
+  ${Media.mobile} {
+    width: 5.5rem;
+    background-size: 14rem 100%;
+    background-position: left;
+  }
 `
 
-export default function Header() {
+export default function Header({ siteConfig, menu }) {
+  const swapURL = siteConfig.url.swap
 
   return (
     <Wrapper>
@@ -61,7 +79,7 @@ export default function Header() {
       </Link>
 
       <Menu>
-        {mainMenu.map(({ id, title, url }) => (
+        {menu.map(({ id, title, url }) => (
           <li key={id}>
             <Link href={url}>
               <a>{title}</a>
@@ -70,7 +88,7 @@ export default function Header() {
         ))}
       </Menu>
 
-      <Button paddingLR={2.4}><a href="https://cowswap.exchange/#/swap" target="_blank" rel="noopener nofollow">Trade on CowSwap</a></Button>
+      <Button paddingLR={2.4} href={swapURL} label={'Trade on CowSwap'} target="_blank" rel="noopener nofollow" />
 
     </Wrapper>
   )

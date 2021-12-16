@@ -1,5 +1,7 @@
 import { AppProps } from 'next/app'
 import GlobalStyles from '../const/styles/global'
+import Head from 'next/head'
+import { meta } from '../const/meta'
 
 // import { i18n } from '@lingui/core'
 // import { I18nProvider } from "@lingui/react";
@@ -35,6 +37,10 @@ export default function App(props: AppProps) {
 
   return (
     <>
+      <Head>
+        {meta}
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"></meta>
+      </Head>
       {/* <I18nProvider i18n={i18n}> */}
       <GlobalStyles />
       <Component {...pageProps} />
