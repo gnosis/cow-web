@@ -45,7 +45,7 @@ export default function Home({ metricsData, siteConfigData }) {
       {/* 2nd section */}
       <Section flow={'column'}>
         <div>
-          <SectionImage margin={'0 auto -18rem'} height={'68rem'}><img alt="Cow belt" loading="lazy" src="/images/cowBelt.jpg" /></SectionImage>
+          <SectionImage margin={'0 auto -18rem'} height={'68rem'}><img loading="lazy" src="/images/cowBelt.jpg" alt="A fast growing protocol" /></SectionImage>
           <h2>A fast growing protocol</h2>
           <SubTitle align="center">Getting you better prices, zero revert rates, <br />MEV protection and gas costs savings. <ExternalLink href="#">View analytics</ExternalLink></SubTitle>
           <Metrics>
@@ -62,7 +62,7 @@ export default function Home({ metricsData, siteConfigData }) {
       {/* 3rd section */}
       <Section flow={'column'} fullWidth id="about">
         <div>
-          <SectionImage margin={'0 auto -6rem'}><img alt="Barn" loading="lazy" src="/images/barn.jpg" /></SectionImage>
+          <SectionImage margin={'0 auto -6rem'}><img loading="lazy" src="/images/barn.jpg" alt="Meta DEX Aggregator" /></SectionImage>
           <h3>More than a meta DEX aggregator</h3>
           <IconList>
 
@@ -109,23 +109,23 @@ export default function Home({ metricsData, siteConfigData }) {
             </IconListItem>
 
           </IconList>
-        </div>
-      </Section>
+        </div >
+      </Section >
 
       {/* 4th section */}
-      <Section flow={'column'}>
+      < Section flow={'column'} >
         <div>
           <h3>The life cycle of a CoW order</h3>
           <SubTitle align='center'>The protocol improves prices for users by batching trades, finding coincidence of wants (CoWs) <br />and tapping into all on chain liquidity - including aggregators. <Link href="#">Read More</Link></SubTitle>
           <SectionImage margin={'0'}>
-            <a href="/images/how-it-works.jpg" target="_blank" rel="nofollow noopener"><img alt="How it works explainer" loading="lazy" src="/images/how-it-works.jpg" /></a>
+            <a href="/images/how-it-works.jpg" target="_blank" rel="nofollow noopener"><img loading="lazy" src="/images/how-it-works.jpg" alt="How it works" /></a>
             <ButtonWrapper className="mobileOnly"><Button label={'View Full Image'} href="/images/how-it-works.jpg" target="_blank" rel="nofollow noopener" /></ButtonWrapper>
-          </SectionImage>
-        </div>
-      </Section>
+          </SectionImage >
+        </div >
+      </Section >
 
       {/* 5th section */}
-      <Section mobileSwitchOrder id="developers">
+      < Section mobileSwitchOrder id="developers" >
         <div>
           <ApiTool>
             <h4>Get a price quote</h4>
@@ -168,8 +168,8 @@ export default function Home({ metricsData, siteConfigData }) {
         </div>
         <div>
           <SectionImage margin={"0 0 -4rem -1rem"} width={"10rem"} height={"10rem"}>
-            <img alt="Plug" loading="lazy" src="/images/icons/plug.svg" />
-          </SectionImage>
+            <img loading="lazy" src="/images/icons/plug.svg" alt="Plug-n-play" />
+          </SectionImage >
 
           <h3>Plug-n-play trading protocol with just a few lines of code</h3>
           <SubTitle>Directly interact with the COW protocol to place, manage and settle your orders through a documented API interface.</SubTitle>
@@ -183,16 +183,16 @@ export default function Home({ metricsData, siteConfigData }) {
           <ButtonWrapper>
             <Button href="/" label="Api Docs" />
           </ButtonWrapper>
-        </div>
-      </Section>
+        </div >
+      </Section >
 
       {/* 6th section */}
-      <Section flow={'column'} fullWidth>
+      < Section flow={'column'} fullWidth >
         <div>
           <SectionImage margin={'0 0 -7rem'} height={'78rem'}>
-            <img alt="Dark forest, CowSwap protect you" loading="lazy" src="/images/cow-dark-forest.jpg" />
-          </SectionImage>
-        </div>
+            <img loading="lazy" src="/images/cow-dark-forest.jpg" alt="Guardian in the dark forest" />
+          </SectionImage >
+        </div >
 
         <div>
           <h3>Your guardian in the dark forest</h3>
@@ -227,16 +227,16 @@ export default function Home({ metricsData, siteConfigData }) {
             </IconListItem>
           </IconList>
         </div>
-      </Section>
+      </Section >
 
       {/* 7th section */}
-      <Section flow={'column'} id="community">
+      < Section flow={'column'} id="community" >
         <div>
           <h3>Join the community</h3>
           <SubTitle align={'center'} maxWidth={62}>Learn more about COW Protocol, chat with the team, others in the community, and have your say in shaping the future of decentralized finance.</SubTitle>
           <SocialList social={social} />
         </div>
-      </Section>
+      </Section >
 
     </Layout >
   )
