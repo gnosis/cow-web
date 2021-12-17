@@ -54,7 +54,7 @@ export const CowTop = styled.div`
     color: ${Color.white};
   }
 
-  > span > ol {
+  > span > span > ol {
     display: flex;
     list-style-type: none;
     flex-flow: row wrap;
@@ -67,11 +67,11 @@ export const CowTop = styled.div`
     }
   }
 
-  > span > ol > li {
+  > span > span > ol > li {
 
   }
 
-  > span > ol > li > i {
+  > span > span > ol > li > i {
     color: ${Color.orange};
     font-style: normal;
   }
@@ -229,29 +229,31 @@ export default function CowSlider() {
         <span>
           <b>Batch Settlement Example</b>
           {activeBatchData.map(({ orders, gasPerOrder, batchURL }, index) =>
-            <>
-              <ol key={index}>
+            <span key={index}>
+              <ol >
                 <li>Orders: <i>{orders}</i></li>
                 <li>Gas per order: <i>~${gasPerOrder}</i></li>
               </ol>
               <ExternalLink href={batchURL} target="_blank" rel="noopener nofollow">View on Etherscan</ExternalLink>
-            </>
+            </span>
           )
           }
         </span>
 
-        {batches.length > 0 && <CowTabs>
-          {batches.map((item) =>
-            <CowTabItem
-              key={item.id || 0}
-              position={item.id || 0}
-              active={item.id === activeBatch || false}
-              onClick={() => { setActiveBatch(item.id) }}
-            >
-              {item.label}
-            </CowTabItem>
-          )}
-        </CowTabs>}
+        {
+          batches.length > 0 && <CowTabs>
+            {batches.map((item) =>
+              <CowTabItem
+                key={item.id || 0}
+                position={item.id || 0}
+                active={item.id === activeBatch || false}
+                onClick={() => { setActiveBatch(item.id) }}
+              >
+                {item.label}
+              </CowTabItem>
+            )}
+          </CowTabs>
+        }
       </CowTop>
 
       {activeBatchData.map(({ description }) =>
