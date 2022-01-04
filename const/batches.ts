@@ -126,7 +126,8 @@ export const batches = [
 
 
   /*
-  CASE: Partial 
+  CASE: No CoW
+    This case is simpler to analyze. Only one trader, big volume, there's surplus 
   */
   {
     id: 3,
