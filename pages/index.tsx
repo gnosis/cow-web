@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
+import { useRef } from 'react'
 
 import { ExternalLink } from '@/const/styles/global'
 import { siteConfig } from '@/const/meta'
@@ -9,7 +10,7 @@ import { GET_QUOTE } from '@/const/api'
 import Layout from '@/components/Layout'
 import { ButtonWrapper } from '@/components/Button'
 import CowSlider from '@/components/CowSlider'
-import { Section, SubTitle, ScrollDownButton, SectionImage, IconList, IconListItem, Metrics, CheckList, ApiTool, ApiCurlCommand, ApiOutput, ApiParams } from '../const/styles/pages/index'
+import { Section, SubTitle, ScrollDownButton, SectionImage, IconList, IconListItem, Metrics, CheckList, ApiWrapper, ApiTool, ApiCurlCommand, ApiParams } from '../const/styles/pages/index'
 import SocialList from '@/components/SocialList'
 import Button from '@/components/Button'
 
@@ -18,6 +19,12 @@ import { default as dark } from 'react-syntax-highlighter/dist/esm/styles/prism/
 
 export default function Home({ metricsData, siteConfigData }) {
   const { title, descriptionShort, social, url } = siteConfigData
+  
+  const scrollToElRef = useRef(null);
+
+  const handleScrollDown = () => {
+    scrollToElRef.current.scrollIntoView({behavior: 'smooth'})
+  }
 
   return (
     <Layout>
@@ -41,11 +48,11 @@ export default function Home({ metricsData, siteConfigData }) {
         <div>
           <CowSlider />
         </div>
-        <ScrollDownButton>Scroll down</ScrollDownButton>
+        <ScrollDownButton onClick={handleScrollDown}>Scroll down</ScrollDownButton>
       </Section>
 
       {/* 2nd section */}
-      <Section flow={'column'}>
+      <Section ref={scrollToElRef} flow={'column'}>
         <div>
           <SectionImage margin={'0 auto -18rem'} height={'68rem'}><img loading="lazy" src="/images/cowBelt.jpg" alt="A fast growing protocol" /></SectionImage>
           <h2>A fast growing protocol</h2>
@@ -129,7 +136,7 @@ export default function Home({ metricsData, siteConfigData }) {
 
       {/* 5th section */}
       <Section mobileSwitchOrder id="developers">
-        <div>
+        <ApiWrapper>
           <ApiTool>
             <h4>Get a price quote</h4>
             <p>Example, how to get a price and fee quotes for selling 10 ETH for USDC.</p>
@@ -146,9 +153,9 @@ export default function Home({ metricsData, siteConfigData }) {
               </SyntaxHighlighter>
             </ApiCurlCommand>
           </ApiTool>
-        </div>
+        </ApiWrapper>
         <div>
-          <SectionImage margin={"0 0 -4rem -1rem"} width={"10rem"} height={"10rem"}>
+          <SectionImage centerMobile margin={"0 0 -4rem -1rem"} width={"10rem"} height={"10rem"}>
             <img loading="lazy" src="/images/icons/plug.svg" alt="Plug-n-play" />
           </SectionImage >
 
