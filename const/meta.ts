@@ -8,7 +8,7 @@ export const siteConfig = {
     rootIPFS: "https://IPFS-URL-HERE",
     swap: "https://cowswap.exchange",
     docs: "https://docs.cowswap.exchange/",
-    apiDocs: "https://protocol-mainnet.gnosis.io/api/",
+    apiDocs: "https://api.cow.fi/mainnet/",
     analytics: "https://dune.xyz/gnosis.protocol/Gnosis-Protocol-V2",
   },
   social: {
