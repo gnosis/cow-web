@@ -244,7 +244,6 @@ function getNetworkConfig(networkID) {
 export default function CowSlider() {
   const [activeBatch, setActiveBatch] = useState(1);
   const { summary, description, metrics, visual, link, bars } = batches.find(b => b.id === activeBatch)
-  
 
   return (
     <Wrapper>
