@@ -9,7 +9,7 @@ import { GET_QUOTE } from '@/const/api'
 import Layout from '@/components/Layout'
 import { ButtonWrapper } from '@/components/Button'
 import CowSlider from '@/components/CowSlider'
-import { Section, SubTitle, ScrollDownButton, SectionImage, IconList, IconListItem, Metrics, CheckList, ApiTool, ApiCurlCommand, ApiOutput, ApiParams } from '../const/styles/pages/index'
+import { Section, SubTitle, ScrollDownButton, SectionImage, IconList, IconListItem, Metrics, CheckList, ApiTool, ApiCurlCommand, ApiParams } from '../const/styles/pages/index'
 import SocialList from '@/components/SocialList'
 import Button from '@/components/Button'
 
