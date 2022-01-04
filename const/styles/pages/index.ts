@@ -359,7 +359,7 @@ export const ApiParams = styled.div`
   }
 `
 
-export const ApiUrl = styled.div`
+export const ApiCurlCommand = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -375,49 +375,12 @@ export const ApiUrl = styled.div`
     gap: 1rem;
   }
 
-  > b {
-    margin: 0 0.6rem 0 0;
-    padding: 0;
-    display: inline-block;
-    color: ${Color.orange};
-  }
-
   > p {
     display: inline-block;
     line-height: 1.2;
   }
 
   > p > span {
-    color: ${Color.orange};
-  }
-`
-
-export const ApiOutput = styled.div`
-  display: flex;
-  flex-flow: column wrap;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 100%;
-  margin: 4rem 0 0;
-
-  > b {
-    margin: 0 0 1.6rem 0;
-    font-weight: ${Font.weightNormal};
-  }
-
-  > div {
-    border: 0.1rem solid ${Color.border};
-    color: ${Color.grey};
-    padding: 2.1rem;
-    border-radius: 1.2rem;
-    line-height: 1.4;
-    overflow-y: auto;
-    font-size: 1.4rem;
-    height: 23rem;
-    word-break: break-all;
-  }
-
-  > div > span {
     color: ${Color.orange};
   }
 `

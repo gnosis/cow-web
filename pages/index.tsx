@@ -1,18 +1,20 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import { GetStaticProps } from 'next'
 
-import Layout from '../components/Layout'
-import { ExternalLink } from '../const/styles/global'
-import { ButtonWrapper } from '../components/Button'
-import CowSlider from '../components/CowSlider'
-import { Section, SubTitle, ScrollDownButton, SectionImage, IconList, IconListItem, Metrics, CheckList, ApiTool, ApiUrl, ApiOutput, ApiParams } from '../const/styles/pages/index'
-import SocialList from '../components/SocialList'
+import { ExternalLink } from '@/const/styles/global'
+import { siteConfig } from '@/const/meta'
+import metrics from '@/const/metrics'
+import { GET_QUOTE } from '@/const/api'
 
-// import { Trans } from '@lingui/macro'
-import { siteConfig } from '../const/meta'
-import metrics from '../const/metrics'
-import Button from '../components/Button'
+import Layout from '@/components/Layout'
+import { ButtonWrapper } from '@/components/Button'
+import CowSlider from '@/components/CowSlider'
+import { Section, SubTitle, ScrollDownButton, SectionImage, IconList, IconListItem, Metrics, CheckList, ApiTool, ApiCurlCommand, ApiOutput, ApiParams } from '../const/styles/pages/index'
+import SocialList from '@/components/SocialList'
+import Button from '@/components/Button'
+
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { default as dark } from 'react-syntax-highlighter/dist/esm/styles/prism/coldark-dark';
 
 export default function Home({ metricsData, siteConfigData }) {
   const { title, descriptionShort, social, url } = siteConfigData
@@ -126,23 +128,25 @@ export default function Home({ metricsData, siteConfigData }) {
       </Section >
 
       {/* 5th section */}
-      < Section mobileSwitchOrder id="developers" >
+      <Section mobileSwitchOrder id="developers">
         <div>
           <ApiTool>
             <h4>Get a price quote</h4>
+            <p>Example, how to get a price and fee quotes for selling 10 ETH for USDC.</p>
 
             <ApiParams>
               <span><b>WETH</b><small>sellToken</small></span>
               <span><b>USDC</b><small>buyToken</small></span>
-              <span><b>340</b><small>sellAmountBeforeFee</small></span>
+              <span><b>10</b><small>sellAmountBeforeFee</small></span>
             </ApiParams>
 
-            <ApiUrl>
-              <b>curl</b>
-              <p>https://protocol-mainnet.gnosis.io/api/<span>v1/quote</span></p>
-            </ApiUrl>
+            <ApiCurlCommand>
+              <SyntaxHighlighter language="json" style={dark}>
+                {GET_QUOTE}
+              </SyntaxHighlighter>
+            </ApiCurlCommand>
 
-            <ApiOutput>
+            {/* <ApiOutput>
               <b>Quoted order response:</b>
               <div>
                 <span>curl</span> -X &apos;POST&apos; \ <br />
@@ -164,7 +168,7 @@ export default function Home({ metricsData, siteConfigData }) {
                 {'}'}
               </div>
 
-            </ApiOutput>
+            </ApiOutput> */}
           </ApiTool>
         </div>
         <div>

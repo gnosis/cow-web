@@ -1,3 +1,5 @@
+const API_BASE_URL = "https://api.cow.fi"
+
 export const siteConfig = {
   title: 'CoW Protocol',
   description: 'Ethereums MetaDEX Aggregator built by Gnosis. It allows users to trade tokens with MEV protection while using ETH-less orders that are settled p2p among users or into the best on-chain liquidity pool.',
@@ -8,7 +10,8 @@ export const siteConfig = {
     rootIPFS: "https://IPFS-URL-HERE",
     swap: "https://cowswap.exchange",
     docs: "https://docs.cowswap.exchange/",
-    apiDocs: "https://api.cow.fi/mainnet/",
+    api: API_BASE_URL + "/mainnet",
+    apiDocs: API_BASE_URL + "/mainnet/",
     analytics: "https://dune.xyz/gnosis.protocol/Gnosis-Protocol-V2",
   },
   social: {
