@@ -145,30 +145,6 @@ export default function Home({ metricsData, siteConfigData }) {
                 {GET_QUOTE}
               </SyntaxHighlighter>
             </ApiCurlCommand>
-
-            {/* <ApiOutput>
-              <b>Quoted order response:</b>
-              <div>
-                <span>curl</span> -X &apos;POST&apos; \ <br />
-                &apos;https://protocol-mainnet.dev.gnosisdev.com/api/v1/quote&apos; \<br />
-                -H &apos;accept: application/json&apos; \<br />
-                -H &apos;Content-Type: application/json&apos; \<br />
-                -d &apos;{'{'} <br />
-                <span>&ldquo;sellToken&ldquo;:</span> &ldquo;0x6810e776880c02933d47db1b9fc05908e5386b96&ldquo;,<br />
-                <span>&ldquo;buyToken&ldquo;:</span> &ldquo;0x6810e776880c02933d47db1b9fc05908e5386b96&ldquo;,<br />
-                <span>&ldquo;receiver&ldquo;:</span> &ldquo;0x6810e776880c02933d47db1b9fc05908e5386b96&ldquo;,<br />
-                <span>&ldquo;validTo&ldquo;:</span> 0,<br />
-                <span>&ldquo;appData&ldquo;:</span> &ldquo;0x0000000000000000000000000000000000000000000000000000000000000000&ldquo;,<br />
-                <span>&ldquo;partiallyFillable&ldquo;:</span> true,<br />
-                <span>&ldquo;sellTokenBalance&ldquo;:</span> &ldquo;erc20&ldquo;,<br />
-                <span>&ldquo;buyTokenBalance&ldquo;:</span> &ldquo;erc20&ldquo;,<br />
-                <span>&ldquo;from&ldquo;:</span> &ldquo;0x6810e776880c02933d47db1b9fc05908e5386b96&ldquo;,<br />
-                <span>&ldquo;kind&ldquo;:</span> &ldquo;sell&ldquo;,<br />
-                <span>&ldquo;sellAmountBeforeFee&ldquo;:</span> &ldquo;1234567890&ldquo;<br />
-                {'}'}
-              </div>
-
-            </ApiOutput> */}
           </ApiTool>
         </div>
         <div>
