@@ -64,7 +64,7 @@ export const batches = [
           * Tx cost = 696.17$
           * Ether (USD Price): 1,422.18 / 0.484793298289219619 = 2,933.5801567776
           * Gas Price = 108.239868575
-          * Gas per user = 2,297,936/27 = 85,108.7407407407
+          * Gas per user = 2,297,936/26 = 88,382.1538461538
         
         Volumes:
             Total Volume = 11,384.51
@@ -87,7 +87,7 @@ export const batches = [
               * Gas cost per trade Sushiswap = (134,047 * 108.239868575 * 1e-9) * 2,933.5801567776 = 42.5639882291
               * Gas cost Sushiswap/Uniswap together = 1,106.6636939566$
               * Liquidity Fees (that would have payed if traded) = 0.003 * 11,384.51 = 34.15353
-              * Improvement of gas compared to sushiswap = 100 * (134,047 - 85,108) / 134,047 = 36.5088364529%
+              * Improvement of gas compared to sushiswap = 100 * (134,047 - 88,382) / 134,047 = 34.0664095429%
         
             
         
@@ -96,25 +96,22 @@ export const batches = [
               * Uniswap Fee (if traded in Uni) = 0.003 * 3,115.46 = 9.34638$
               * Total Fee (USD) = 173.99$            
               * Total saved = 1,106.6636939566 + 34.15353 - 173.99 - 4.37817 - 9.34638 = 953.1026739566
-              * Solvers payed Fee = 
-              * Solvers profited = 
-              * 
   */
   {
     id: 2,
     label: 'Partial CoW',
     summary: "The more traders, the more savings",
-    description: "The batch costed 2,297,936 gas, but it was split among 27 traders. This reduced the gas from 134K to 85K per trade.",
+    description: "The batch costed 2,297,936 gas, but it was split among 26 traders. This reduced the gas from 134K to 88K per trade.",
     link: {
       label: 'View on Etherscan',
-      url: 'https://etherscan.io/tx/0xc9761a9e40258065df485236fd6105d6d3678e46c80a0130c5c1f3f6d9e560a9'
+      url: 'https://etherscan.io/tx/0x172bddae0015331f4b357905ff7995389597a38294a00b4b13e90c1d70884785'
     },
     metrics: [{
       label: 'Trades',
-      value: 27
+      value: 26
     }, {
       label: 'Gas cost',
-      value: '36% cheaper'
+      value: '34% cheaper'
     }],
     visual: 'images/cow-graph-partialCow.png',
     bars: [
