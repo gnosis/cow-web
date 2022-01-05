@@ -38,7 +38,7 @@ export default function Home({ metricsData, siteConfigData }) {
         <div>
           <h1>Batch Settlement layer for
             MEV protected trades</h1>
-          <SubTitle lineHeight={2}>COW Protocol offers top DeFi rates with MEV protection by leveraging its Batch Settlement layer built on top of AMMs & DEX Aggregatos. This layer allows Solvers to create CoWs (aka Coincidence of Wants) settlements without the need of liquidity pools, or use the pools as fallback mechanism when CoWs can be found.</SubTitle>
+          <SubTitle lineHeight={2}>COW Protocol offers top DeFi rates with MEV protection by leveraging its Batch Settlement layer built on top of AMMs & DEX Aggregators. This layer allows Solvers (tx executors) to create CoWs (aka Coincidence of Wants) settlements without the need of liquidity pools, or use the pools as fallback mechanism when CoWs cannot be found.</SubTitle>
 
           <ButtonWrapper>
             <Button href={url.docs} target="_blank" label="Documentation" />
