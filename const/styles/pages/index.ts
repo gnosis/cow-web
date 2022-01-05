@@ -31,6 +31,7 @@ export const Section = styled.section<{ hero?: boolean, breakMedium?: boolean, c
   ${({ hero, breakMedium }) => (hero || breakMedium) && `
     margin: 0 auto;
     min-height: calc(100vh - 8.1rem);
+    padding-top: 3.6rem;
 
     ${Media.mediumDown} {
       padding: 3.2rem 0;
@@ -107,8 +108,8 @@ ${({ mediumSwitchOrder }) => mediumSwitchOrder && `
     }
   }
 
-  h1 {
-    ${Media.desktopDown} {
+  h1, h2 {
+    ${Media.desktopLargeDown} {
       font-size: 4.8rem;
     }
   }

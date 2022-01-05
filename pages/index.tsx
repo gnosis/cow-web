@@ -124,7 +124,7 @@ export default function Home({ metricsData, siteConfigData }) {
       </Section >
 
       {/* 4th section */}
-      < Section flow={'column'} >
+      < Section className='container' flow={'column'} >
         <div>
           <h3>The life cycle of a CoW order</h3>
           <SubTitle align='center'>The protocol improves prices for users by batching trades, finding coincidence of wants (CoWs) <br className='hideMobile' />and tapping into all on chain liquidity - including aggregators.
