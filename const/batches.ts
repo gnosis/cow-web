@@ -32,7 +32,7 @@ export const batches = [
   {
     id: 1,
     label: 'Full CoW',
-    summary: "The users traded 99.39% directly, the remaing is executed in Sushiswap",
+    summary: "The users traded 99.39% peer-to-peer, the remaining is executed in Sushiswap",
     description: "Traders would have payed 1,396$ of liquidity fee in Sushiswap, instead they payed 8$",
     link: {
       label: 'View on Etherscan',
