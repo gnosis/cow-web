@@ -38,7 +38,7 @@ export const batches = [
       label: 'View on Etherscan',
       url: 'https://etherscan.io/tx/0x691d1a8ba39c036e841b6e2ed970f9068ac4a27b61955afb852f11019f2ff4d8'
     },
-    visual: 'images/cow-graph-fullCow.png',
+    visual: 'images/cow-graph-fullCow-64.png',
     bars: [
 
       { id: 4, network: 'COW', percent: 100 },
@@ -113,11 +113,11 @@ export const batches = [
       label: 'Gas cost',
       value: '34% cheaper'
     }],
-    visual: 'images/cow-graph-partialCow.png',
+    visual: 'images/cow-graph-partialCow-64.png',
     bars: [
-      { id: 1, network: 'SUSHI', percent: 12.81 },
-      { id: 2, network: 'UNIV2', percent: 27.36 },
-      { id: 4, network: 'COW', percent: 59.83 },
+      { id: 1, network: 'UNIV2', percent: 27.36 },
+      { id: 2, network: 'SUSHI', percent: 12.81 },
+      { id: 3, network: 'COW', percent: 59.83 },
     ]
   },
 
@@ -142,7 +142,7 @@ export const batches = [
       label: 'Surplus',
       value: '$3,176.63'
     }],
-    visual: 'images/cow-graph-noCow.png',
+    visual: 'images/cow-graph-noCow-64.png',
     bars: [
       { id: 1, network: 'CURVE', percent: 100 }
     ]
