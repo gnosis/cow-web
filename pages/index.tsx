@@ -55,7 +55,7 @@ export default function Home({ metricsData, siteConfigData }) {
         <div>
           <SectionImage margin={'0 auto -18rem'} height={'68rem'}><img loading="lazy" src="/images/cowBelt.jpg" alt="A fast growing protocol" /></SectionImage>
           <h2>A fast-growing trading protocol</h2>
-          <SubTitle align="center">Trade on CoW Protocol for <br />for better prices, gas cost savings and extra secure MEV protection <ExternalLink href="#">View analytics</ExternalLink></SubTitle>
+          <SubTitle align="center">Trade on CoW Protocol for <br /> better prices, gas cost savings and extra secure MEV protection <ExternalLink href="#">View analytics</ExternalLink></SubTitle>
           <Metrics>
             {metricsData.map(({ label, value }, i) =>
               <div key={i}>
@@ -162,7 +162,7 @@ export default function Home({ metricsData, siteConfigData }) {
           </SectionImage >
 
           <h3>Plug-n-play trading protocol with just a few lines of code</h3>
-          <SubTitle>Directly interact with the COW protocol to place, manage and settle your orders through a documented API interface.</SubTitle>
+          <SubTitle>Directly interact with the CoW protocol to place, manage and settle your orders through a documented API interface.</SubTitle>
 
           <CheckList>
             <li>Fetch Quotes</li>
@@ -194,7 +194,7 @@ export default function Home({ metricsData, siteConfigData }) {
       < Section flow={'column'} id="community" >
         <div>
           <h3>Join the community</h3>
-          <SubTitle align={'center'} maxWidth={62}>Learn more about COW Protocol, chat with the team, others in the community, and have your say in shaping the future of decentralized finance.</SubTitle>
+          <SubTitle align={'center'} maxWidth={62}>Learn more about CoW Protocol, chat with the team, others in the community, and have your say in shaping the future of decentralized finance.</SubTitle>
           <SocialList social={social} />
         </div>
       </Section >
