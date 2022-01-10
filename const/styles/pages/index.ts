@@ -6,7 +6,7 @@ import { Color, Font, Media } from 'const/styles/variables'
 export const Section = styled.section<{ hero?: boolean, breakMedium?: boolean, colorVariant?: string, flow?: string, fullWidth?: boolean, mediumSwitchOrder?: boolean, mobileSwitchOrder?: boolean }>`
   display: flex;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   flex-flow: ${({ flow }) => flow === 'column' ? 'column wrap' : 'row'};
   gap: 8rem;
   margin: 10rem auto;
@@ -30,7 +30,7 @@ export const Section = styled.section<{ hero?: boolean, breakMedium?: boolean, c
   // Hero specific styling
   ${({ hero, breakMedium }) => (hero || breakMedium) && `
     margin: 0 auto;
-    min-height: calc(100vh - 8.1rem);
+    min-height: 100%;
     padding-top: 3.6rem;
 
     ${Media.mediumDown} {
@@ -95,9 +95,8 @@ ${({ mediumSwitchOrder }) => mediumSwitchOrder && `
   }
 
    h1, h2, h3 {
-    font-size: ${({ hero }) => hero ? "6.8rem" : "5.4rem"};
+    font-size: 5rem;
     line-height: 1.2;
-    /* font-weight: ${({ hero }) => hero ? Font.weightNormal : Font.weightBold}; */
     font-weight: ${Font.weightBold};
     margin: 0;
     z-index: 1;
@@ -110,7 +109,7 @@ ${({ mediumSwitchOrder }) => mediumSwitchOrder && `
 
   h1, h2 {
     ${Media.desktopLargeDown} {
-      font-size: 4.8rem;
+      font-size: 4.6rem;
     }
   }
 
