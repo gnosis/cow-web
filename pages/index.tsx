@@ -38,7 +38,7 @@ export default function Home({ metricsData, siteConfigData }) {
         <div>
           <h1>The Settlement Layer for
             Decentralized Trading</h1>
-          <SubTitle lineHeight={2}>COW Protocol offers top DeFi rates with MEV protection by leveraging its Batch Settlement layer built on top of AMMs & DEX Aggregators. This layer allows Solvers (tx executors) to create CoWs (aka Coincidence of Wants) settlements without the need of liquidity pools, or use the pools as fallback mechanism when CoWs cannot be found.</SubTitle>
+          <SubTitle lineHeight={2}>COW Protocol offers top DeFi rates with MEV protection by leveraging its Batch Settlement layer built on top of AMMs & DEX Aggregators. This layer allows Solvers (tx executors) to create CoWs (aka Coincidence of Wants) settlements without the need of liquidity pools, or use the pools as a fallback mechanism when CoWs cannot be found.</SubTitle>
 
           <ButtonWrapper>
             <Button href={url.docs} target="_blank" label="Documentation" />
@@ -94,11 +94,11 @@ export default function Home({ metricsData, siteConfigData }) {
             <IconListItem icon="images/icons/relation.svg">
               <span>
                 <b>Coincidence of Wants (CoWs)</b>
-                <p>CoWs, simple put as peer-to-peer trades, improve the prices by reducing the need for liquidity pools. This saves the users money spent on protocol fees, slippage, and gas fees.</p>
+                <p>CoWs, simply put as peer-to-peer trades, improve the prices by reducing the need for liquidity pools. This saves the users money spent on protocol fees, slippage, and gas fees.</p>
               </span>
             </IconListItem>
 
-            <IconListItem icon="images/icons/timeMoney.svg">
+            <IconListItem icon="images/icons/shield.svg">
               <span>
                 <b>MEV Mitigation</b>
                 <p>Trades are protected against MEV in multiple layers: via Coincidence of Wants and leveraging both Flashbots Protect RPC and the Eden Network.</p>
@@ -141,7 +141,7 @@ export default function Home({ metricsData, siteConfigData }) {
         <ApiWrapper>
           <ApiTool>
             <h4>Get a price quote</h4>
-            <p>Example, how to get a price and fee quotes for selling 10 ETH for USDC.</p>
+            <p>Example, how to get a price and fee quote for selling 10 ETH for USDC.</p>
 
             <ApiParams>
               <span><b>WETH</b><small>sellToken</small></span>
