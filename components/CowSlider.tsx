@@ -15,7 +15,6 @@ export const Wrapper = styled.div`
   border: 0.1rem solid ${transparentize(0.9, Color.white)};
   backdrop-filter: blur(6rem);
   border-radius: 7rem;
-  max-height: 64rem;
   padding: 4.8rem;
   font-size: ${Font.sizeDefault};
   color: ${Color.grey};

@@ -131,19 +131,6 @@ export const TopGradient = styled.div`
   top: 0;
   z-index: 0;
   opacity: 0.5;
-
-  /* &::after {
-    content: "";
-    background: url('images/noise.svg') repeat center/cover;
-    filter: contrast(170%) brightness(1000%);
-    mix-blend-mode: screen;
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  } */
 `
 
 export const SubTitle = styled.p<{ maxWidth?: number, align?: string, lineHeight?: number }>`
@@ -328,7 +315,6 @@ export const ApiTool = styled.div`
   border: 0.1rem solid ${Color.border};
   backdrop-filter: blur(6rem);
   border-radius: 7rem;
-  // max-height: 64rem;
   padding: 2.4rem 4.8rem;
   font-size: ${Font.sizeDefault};
 
@@ -338,7 +324,6 @@ export const ApiTool = styled.div`
   }
 
   ${Media.mobile} {
-    // max-height: initial;
     border-radius: 2rem;
     padding: 0 2.4rem 2.4rem;
   }
