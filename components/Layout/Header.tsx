@@ -51,7 +51,7 @@ const Wrapper = styled.header`
   }
 `
 
-const Menu = styled.ol<{ visible?: boolean }>`
+const Menu = styled.ol`
   display: flex;
   list-style: none;
   font-size: ${Font.sizeDefault};
