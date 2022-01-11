@@ -7,12 +7,12 @@ const trackingId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
 
 
 function handleRouteChange(url: string) {
-  console.log('[Analytics] Page view', url)
+  // console.log('[Analytics] Page view', url)
   ReactGA.pageview(url);
 }
 
 function initializeAnalytics() {
-  console.log('[Analytics] Tracking ID', trackingId)
+  // console.log('[Analytics] Tracking ID', trackingId)
   ReactGA.initialize(trackingId, {
     gaOptions: {
       storage: 'none',
