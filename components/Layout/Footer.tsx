@@ -161,7 +161,7 @@ export default function Footer({ siteConfig, menu }) {
 
 
       <LogoSection>
-        <Link passHref href={siteConfig.url.root}>
+        <Link passHref href='/'>
           <Logo />
         </Link>
         <SocialList social={social} labels={false} iconSize={2.8} gap={0.7} innerPadding={1} alignItems={'right'} />
